@@ -146,6 +146,7 @@
     <ClInclude Include="src\AudioBuffer.h" />
     <ClInclude Include="src\AudioProcessor.h" />
     <ClInclude Include="src\Daw.h" />
+    <ClInclude Include="src\Helpers.h" />
     <ClInclude Include="src\Observer.h" />
   </ItemGroup>
   <ItemGroup>

@@ -32,16 +32,15 @@ namespace pul {
     void MyProcessor::prepareToPlay()
     {
         std::cout << "Preparing MyProcessor...\n";
-        m_LevelDb = 12.0412f;
+        m_LevelDb = -6.0205f;  //0.5x gain decrease...
         m_Gain.changeLevelByDb(m_LevelDb);
     }
+
     void MyProcessor::processBlock(AudioBuffer<float>& buffer)
     {
-        std::cout << "Processing MyProcessor...\n";
+        std::cout << "MyProcessor: Processing...\n";
         m_Gain.prepare(&buffer);
         m_Gain.process();
-
-        buffer.getWritePointer()[3] = 42.42;
     }
 
 }

@@ -6,15 +6,11 @@
 #include <memory>
 #include "Observer.h"
 
+
+
 namespace pul {
 
     using ProcVector = std::vector<std::unique_ptr<AudioProcessor>>;
-
-    class NotImplementedException : public std::logic_error
-    {
-    public:
-        NotImplementedException() : std::logic_error("Function not yet implemented") { };
-    };
 
     class Daw : public Broadcaster
     {

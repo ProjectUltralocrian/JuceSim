@@ -19,11 +19,9 @@ namespace pul {
 
     void YourProcessor::processBlock(AudioBuffer<float>& buffer)
     {
-        std::cout << "Processing YourProcessor...\n";
+        std::cout << "YourProcessor: Processing...\n";
         m_DryWet.prepare(&buffer);
         m_DryWet.process();
-
-        buffer.getWritePointer()[2] = -42.42;
     }
 
 }

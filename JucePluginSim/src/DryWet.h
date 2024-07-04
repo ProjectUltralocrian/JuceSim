@@ -42,7 +42,7 @@ namespace pul {
     private:
         uint8_t m_DryLevel{ 100 };
         AudioBuffer<SampleType>* m_Buffer{ nullptr };
-        AudioBuffer<SampleType> m_DryBuffer{ 2 };
+        AudioBuffer<SampleType> m_DryBuffer{ 2 };  //random initial value just to check that the correct size will be set in prepare()...
         AudioBuffer<SampleType> m_WetBuffer{ 9 };
     };
 

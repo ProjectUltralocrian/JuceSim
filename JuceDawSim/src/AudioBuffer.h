@@ -1,12 +1,18 @@
 #ifndef AUDIOBUFFER_H
 #define AUDIOBUFFER_H
 
+
+#include "Helpers.h"
 #include <iosfwd>
 #include <concepts>
 #include <cassert>
 #include <algorithm>
 #include <cstring>
 #include <iostream>
+#include <span>
+
+
+
 
 namespace pul {
 
@@ -18,6 +24,15 @@ namespace pul {
 
         //AudioBuffer() : m_Buffer{ new SampleType[BUFSIZE] } {}
         AudioBuffer(size_t size) : m_BufSize{ size }, m_Buffer{ new SampleType[size] } {}
+
+        AudioBuffer(size_t size, std::span<SampleType> rhs)
+            : AudioBuffer(size)
+        {
+            ASSERT(size == rhs.size());
+            std::memcpy(m_Buffer, rhs.data(), size * sizeof(SampleType));
+            //std::cout << size * sizeof(SampleType) << " bytes copied...\n";
+        }
+
         AudioBuffer(const AudioBuffer& rhs) noexcept
             : m_BufSize{ rhs.m_BufSize }, m_Buffer(new SampleType[rhs.m_BufSize])
         {
