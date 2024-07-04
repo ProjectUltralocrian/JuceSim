@@ -11,6 +11,8 @@
 #ifdef _DEBUG
 	#ifdef _MSC_VER
 		#define ASSERT(x) if(!(x)) {__debugbreak();}
+	#else 
+		#define ASSERT
 	#endif
 #else
 	#define ASSERT
@@ -35,6 +37,7 @@ namespace pul {
 	* @param NumSamplesInFullSinCycle number of values in the array / full sine wave cycle (must be non-negative)
 	*/
 	template<typename SampleType, size_t NumSamplesInFullSinCycle>
+		requires std::is_trivial_v<SampleType>
 	constexpr std::array<SampleType, NumSamplesInFullSinCycle> getSinSampleValues() noexcept
 	{
 		std::array<SampleType, NumSamplesInFullSinCycle> output;

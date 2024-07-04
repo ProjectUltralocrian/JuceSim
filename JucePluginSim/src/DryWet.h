@@ -13,7 +13,6 @@ namespace pul {
     class DryWet
     {
     public:
-
         inline SampleType dryLevel() const noexcept { return m_DryLevel; }
         void setDryLevel(uint8_t newLevel) noexcept { ASSERT(0 <= newLevel && newLevel <= 100); m_DryLevel = newLevel; }
         void prepare(AudioBuffer<SampleType>* buffer)

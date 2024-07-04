@@ -38,6 +38,8 @@ namespace pul {
 
         //Simulating filling the buffers with audio samples
         //and sending these to the audio processors.
+        //In this case creating and sending three buffers filled with
+        //one full sine-wave cycle each.
         constexpr size_t NUMSAMPLES = 36;
  
         auto fullSinCycle = getSinSampleValues<float, NUMSAMPLES>();
@@ -64,7 +66,7 @@ namespace pul {
             }
         }
     }
-
+    
     ProcVector Daw::getProcessors()
     {
         ProcVector output;
@@ -85,18 +87,12 @@ namespace pul {
         if (listener)
         {
             m_Listeners.push_back(listener);
-            std::cout << "Registered listener: " << listener << std::endl;
-            std::cout << "Listeners: " << m_Listeners[0] << std::endl;
         }
     }
 
-
     void Daw::deregisterListener(Listener* listener)
     {
-        //throw NotImplementedException{};
-        std::cout << "Number of listeners: " << m_Listeners.size() << std::endl;
         std::erase_if(m_Listeners, [=](Listener* l) {return l == listener; });
-        std::cout << "Number of listeners: " << m_Listeners.size() << std::endl;
     }
 
     void Daw::notify(std::string_view msg) const
@@ -105,5 +101,4 @@ namespace pul {
             listener->onNotified(*this, msg);
         }
     }
-
 }

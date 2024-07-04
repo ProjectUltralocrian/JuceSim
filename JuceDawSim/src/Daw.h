@@ -17,7 +17,15 @@ namespace pul {
     public:
         Daw();
         void run();
+
+        /**
+        * @brief Registers a pointer to a Listener instance,
+        *        which will receive notifications through the notify() method.
+        * @param listener: Raw pointer to Listener object. Must have a lifetime at least as long as the Broadcaster,
+        *        or be deregistered upon destruction.
+        */
         virtual void registerListener(Listener* listener) override;
+
         virtual void deregisterListener(Listener* listener) override;
         inline float getVolume() const { return m_Volume; }
         void setVolume(float newVolume);

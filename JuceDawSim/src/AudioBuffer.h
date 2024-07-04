@@ -3,14 +3,11 @@
 
 
 #include "Helpers.h"
-#include <iosfwd>
 #include <concepts>
 #include <algorithm>
-#include <cstring>
 #include <iostream>
 #include <span>
 #include <functional>
-
 
 
 namespace pul {
@@ -20,8 +17,6 @@ namespace pul {
     class AudioBuffer
     {
     public:
-
-        //AudioBuffer() : m_Buffer{ new SampleType[BUFSIZE] } {}
         AudioBuffer(size_t size) : m_BufSize{ size }, m_Buffer{ new SampleType[size] } {}
 
         AudioBuffer(size_t size, std::span<SampleType> rhs)
@@ -29,7 +24,6 @@ namespace pul {
         {
             ASSERT(size == rhs.size());
             std::memcpy(m_Buffer, rhs.data(), size * sizeof(SampleType));
-            //std::cout << size * sizeof(SampleType) << " bytes copied...\n";
         }
 
         AudioBuffer(const AudioBuffer& rhs) noexcept
@@ -37,6 +31,7 @@ namespace pul {
         {
             std::memcpy(m_Buffer, rhs.m_Buffer, m_BufSize * sizeof(SampleType));
         }
+
         AudioBuffer& operator=(const AudioBuffer& rhs) noexcept
         {
             ASSERT(&rhs != this && rhs.m_BufSize == m_BufSize && rhs.m_Buffer);
@@ -46,12 +41,14 @@ namespace pul {
             std::memcpy(m_Buffer, rhs.m_Buffer, m_BufSize * sizeof(SampleType));
             return *this;
         }
+
         AudioBuffer(AudioBuffer&& rhs) noexcept
             : m_BufSize{ rhs.m_BufSize }
         {
             m_Buffer = rhs.m_Buffer;
             rhs.m_Buffer = nullptr;
         }
+
         AudioBuffer& operator= (AudioBuffer&& rhs) noexcept
         {
             delete[] m_Buffer;
