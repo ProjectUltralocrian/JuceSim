@@ -32,7 +32,7 @@ namespace pul {
     void MyProcessor::prepareToPlay()
     {
         std::cout << "Preparing MyProcessor...\n";
-        m_LevelDb = -6.0205f;  //0.5x gain decrease...
+        m_LevelDb = -6.0205f;  //(-6.02dB == 0.5x gain decrease..)
         m_Gain.changeLevelByDb(m_LevelDb);
     }
 

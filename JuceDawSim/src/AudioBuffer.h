@@ -5,12 +5,11 @@
 #include "Helpers.h"
 #include <iosfwd>
 #include <concepts>
-#include <cassert>
 #include <algorithm>
 #include <cstring>
 #include <iostream>
 #include <span>
-
+#include <functional>
 
 
 
@@ -40,7 +39,7 @@ namespace pul {
         }
         AudioBuffer& operator=(const AudioBuffer& rhs) noexcept
         {
-            assert(&rhs != this && rhs.m_BufSize == m_BufSize && rhs.m_Buffer);
+            ASSERT(&rhs != this && rhs.m_BufSize == m_BufSize && rhs.m_Buffer);
             if (!m_Buffer) {
                 m_Buffer = new SampleType[m_BufSize];
             }
@@ -65,51 +64,59 @@ namespace pul {
         ~AudioBuffer()
         {
             delete[] m_Buffer;
-        }
+        } 
 
-        template<typename ProcessFunc>
-        void process(ProcessFunc func)
+        using ProcessFunc = std::function<SampleType(SampleType)>;
+        void process(const ProcessFunc& func)
         {
             for (size_t i = 0; i < m_BufSize; ++i) {
                 m_Buffer[i] = func(m_Buffer[i]);
             }
         }
+
         void fillWith(SampleType value)
         {
             auto v = value;
             process([=](SampleType x) {return v; });
         }
+
         const SampleType* getReadPointer() const
         {
             return m_Buffer;
         }
+
         SampleType* getWritePointer()
         {
             return m_Buffer;
         }
+
         inline constexpr size_t getNumSamples() const noexcept
         {
             return m_BufSize;
         }
+
         void copyFrom(AudioBuffer& other)
         {
-            assert(m_BufSize == other.m_BufSize && m_Buffer != other.m_Buffer);
-            assert(m_Buffer && other.m_Buffer);
+            ASSERT(m_BufSize == other.m_BufSize && m_Buffer != other.m_Buffer);
+            ASSERT(m_Buffer && other.m_Buffer);
             *this = other;
         }
+
         void addFrom(AudioBuffer& other)
         {
-            assert(m_BufSize == other.m_BufSize);
+            ASSERT(m_BufSize == other.m_BufSize);
             for (size_t i = 0; i < m_BufSize; ++i) {
                 m_Buffer[i] += other.m_Buffer[i];
             }
         }
+
         void print() const
         {
             for (size_t i = 0; i < m_BufSize; ++i) {
                 std::cout << m_Buffer[i] << std::endl;
             }
         }
+
     private:
         size_t m_BufSize{ 5 };
         SampleType* m_Buffer;

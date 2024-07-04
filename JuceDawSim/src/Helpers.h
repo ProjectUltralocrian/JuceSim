@@ -4,6 +4,7 @@
 #include <cmath>
 #include <array>
 #include <numbers>
+#include <stdexcept>
 
 
 

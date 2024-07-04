@@ -3,7 +3,7 @@
 
 #include "AudioBuffer.h"
 #include <cstdint>
-#include <cassert>
+#include "Helpers.h"
 
 
 namespace pul {
@@ -15,7 +15,7 @@ namespace pul {
     public:
 
         inline SampleType dryLevel() const noexcept { return m_DryLevel; }
-        void setDryLevel(SampleType newLevel) noexcept { assert(0 <= newLevel && newLevel <= 100); m_DryLevel = newLevel; }
+        void setDryLevel(uint8_t newLevel) noexcept { ASSERT(0 <= newLevel && newLevel <= 100); m_DryLevel = newLevel; }
         void prepare(AudioBuffer<SampleType>* buffer)
         {
             m_Buffer = buffer;
@@ -25,7 +25,7 @@ namespace pul {
                 m_DryBuffer = std::move(new_DryBuffer);
                 m_WetBuffer = std::move(new_WetBuffer);
             }
-            assert(m_Buffer);
+            ASSERT(m_Buffer);
 
         }
         void process()
