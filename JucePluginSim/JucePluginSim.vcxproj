@@ -21,6 +21,7 @@
   <ItemGroup>
     <ClInclude Include="src\DryWet.h" />
     <ClInclude Include="src\Gain.h" />
+    <ClInclude Include="src\JucePlugin.h" />
     <ClInclude Include="src\MyProcessor.h" />
     <ClInclude Include="src\YourProcessor.h" />
   </ItemGroup>

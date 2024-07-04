@@ -17,7 +17,6 @@ struct Listener
 {
     virtual ~Listener() = default;
     virtual void onNotified(const Broadcaster&, std::string_view msg) = 0;
-  
 };
 
 

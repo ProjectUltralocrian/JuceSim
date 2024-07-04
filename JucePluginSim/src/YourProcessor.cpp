@@ -2,27 +2,28 @@
 #include <iostream>
 
 
-YourProcessor::YourProcessor(Daw& daw)
-    : m_Daw{daw}
-{
-    
-}
+namespace pul {
 
-void YourProcessor::prepareToPlay()
-{
-    std::cout << "Preparing YourProcessor...\n";
+    YourProcessor::YourProcessor(Daw& daw)
+        : m_Daw{ daw } {}
 
-    //simulating retrieving audio parameters (e.g. from GUI)
-    //and setting the state of the plugin prior to processing.
-    m_DryLevel = 50;
-    m_DryWet.setDryLevel(m_DryLevel);
-}
+    void YourProcessor::prepareToPlay()
+    {
+        std::cout << "Preparing YourProcessor...\n";
 
-void YourProcessor::processBlock(AudioBuffer<float>& buffer)
-{
-    std::cout << "Processing YourProcessor...\n";
-    m_DryWet.prepare(&buffer);
-    m_DryWet.process();
-    
-    buffer.getWritePointer()[2] = -42.42;
+        //simulating retrieving audio parameters (e.g. from GUI)
+        //and setting the state of the plugin prior to processing.
+        m_DryLevel = 50;
+        m_DryWet.setDryLevel(m_DryLevel);
+    }
+
+    void YourProcessor::processBlock(AudioBuffer<float>& buffer)
+    {
+        std::cout << "Processing YourProcessor...\n";
+        m_DryWet.prepare(&buffer);
+        m_DryWet.process();
+
+        buffer.getWritePointer()[2] = -42.42;
+    }
+
 }
