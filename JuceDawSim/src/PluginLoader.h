@@ -15,8 +15,8 @@ public:
     explicit PluginLoader(const wchar_t* dllName, pul::Daw& daw);
     PluginLoader(const PluginLoader&) = delete;
     ~PluginLoader();
-    void callFuncOnPlugin(const char* funcName);
-
+    bool callFuncOnPlugin(const char* funcName);
+    bool isLoadSuccessful() const noexcept { return m_RunTimeLinkSuccess; }
 private:
     HINSTANCE m_hInstLib{ nullptr };
     pul::Daw& m_Daw;

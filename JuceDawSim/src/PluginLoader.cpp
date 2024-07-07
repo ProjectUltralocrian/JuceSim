@@ -10,8 +10,15 @@ PluginLoader::PluginLoader(const wchar_t* dllName, pul::Daw& daw)
     if (!m_hInstLib)
     {
         std::wcerr << "Unable to load " << dllName << std::endl;
+    } 
+    else
+    {
+        if (!callFuncOnPlugin("AudioProcessorInit"))
+        {
+            std::cerr << "Unable to initialize plugin.\n";
+        }
     }
-    callFuncOnPlugin("AudioProcessorInit");
+
 }
 #else 
     : m_Daw{daw}
@@ -28,14 +35,14 @@ PluginLoader::~PluginLoader()
         if (ProcAdd)
         {
             std::cout << "Finalising...\n";
-            m_RunTimeLinkSuccess = true;
             ProcAdd(m_Daw);
         }
         m_FreeResult = FreeLibrary(m_hInstLib);
+        ASSERT(m_FreeResult);
     }
 }
 
-void PluginLoader::callFuncOnPlugin(const char* funcName)
+bool PluginLoader::callFuncOnPlugin(const char* funcName)
 {
 
     if (m_hInstLib)
@@ -47,9 +54,8 @@ void PluginLoader::callFuncOnPlugin(const char* funcName)
         {
             m_RunTimeLinkSuccess = true;
             ProcAdd(m_Daw);
+            return true;
         }
-    }
-    if (!m_RunTimeLinkSuccess) {
-        std::cerr << "Unable to call requested function.\n";
+        return false;
     }
 }

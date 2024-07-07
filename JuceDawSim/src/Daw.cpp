@@ -11,9 +11,8 @@ namespace pul {
 
     void Daw::run()
     {
-        PluginLoader loader(L"PluginSim.dll", *this);
-        //loader.callFuncOnPlugin("AudioProcessorInit");
-
+        PluginLoader loader(L"PluginSin.dll", *this);
+       
         std::cout << "Simulating host DAW... :) \n";
         auto processors = getAudioProcessors();
         if (processors.size()) {
