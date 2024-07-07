@@ -1,31 +1,30 @@
-//#include "PulEngine.h"
-//#include "AudioBuffer.h"
 #include "Daw.h"
 #include "AudioProcessor.h"
+#include "PluginLoader.h"
 #include <iostream>
-#include <memory>
 #include <array>
 #include <format>
-#include <stdexcept>
+#include <iostream>
 
 
 namespace pul {
 
-   /*Daw::Daw()
-    {
-        m_Processors = getProcessors();
-    }
-    */
-
     void Daw::run()
     {
+        PluginLoader loader(L"PluginSim.dll", *this);
+        //loader.callFuncOnPlugin("AudioProcessorInit");
+
         std::cout << "Simulating host DAW... :) \n";
-        std::cout << "Registered plugins: \n";
-        for (const auto& proc : getAudioProcessors()) {
-            std::cout << proc->getName() << std::endl;
+        auto processors = getAudioProcessors();
+        if (processors.size()) {
+            std::cout << "Registered plugins: \n";
+        }
+        for (const auto& proc : processors) {
+            std::cout << "  - " << proc->getName() << std::endl;
         }
 
         play();
+
     }
 
     void Daw::play()
@@ -71,15 +70,6 @@ namespace pul {
         }
     }
     
-    /*
-    ProcVector Daw::getProcessors()
-    {
-        ProcVector output;
-        output.emplace_back(std::make_unique<MyProcessor>(*this));
-        output.emplace_back(std::make_unique<YourProcessor>(*this));
-        return output;
-    }
-    */
     void Daw::setVolume(float newVolume)
     {
         ASSERT(-60.f <= newVolume && newVolume <= 15.f);

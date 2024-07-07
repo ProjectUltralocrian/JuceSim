@@ -44,6 +44,7 @@
     <ProjectGuid>{49f030ac-9a28-43ad-9513-9af03e83eb05}</ProjectGuid>
     <RootNamespace>JucePluginSim</RootNamespace>
     <WindowsTargetPlatformVersion>10.0</WindowsTargetPlatformVersion>
+    <ProjectName>PluginSim</ProjectName>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">

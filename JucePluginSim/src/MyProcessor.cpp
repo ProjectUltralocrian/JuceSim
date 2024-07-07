@@ -14,6 +14,7 @@ namespace pul {
     MyProcessor::~MyProcessor()
     {
         m_Daw.deregisterListener(this);
+        //TODO: registerAudioProcessor
     }
 
     void MyProcessor::onNotified(const Broadcaster& broadcaster, std::string_view msg)
@@ -26,7 +27,8 @@ namespace pul {
             std::cout << "m_Gain level: " << m_Gain.level() << std::endl;
         }
         else {
-            std::cout << "Not daw...\n";
+            ASSERT(false);
+            //std::cout << "Not daw...\n";
         }
     }
 

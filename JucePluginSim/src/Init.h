@@ -5,11 +5,6 @@
 #include "YourProcessor.h"
 
 extern "C" {
-	void __declspec(dllexport) Init(pul::Daw& daw);
-}
-
-
-
-namespace pul::AudioPlugin {
-	
+	void __declspec(dllexport) AudioProcessorInit(pul::Daw& daw);
+	void __declspec(dllexport) AudioProcessorFinalise(pul::Daw& daw);
 }

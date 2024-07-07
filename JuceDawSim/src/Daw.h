@@ -10,13 +10,10 @@
 
 namespace pul {
 
-    //using ProcVector = std::vector<std::unique_ptr<AudioProcessor>>;
-
     class Daw : public AudioEngine,
                 public Broadcaster
     {
     public:
-        //Daw() = default;
         void run() override;
 
         /**
@@ -37,26 +34,12 @@ namespace pul {
          *        otherwise the destruction will take place in the incorrect order...
          */
         std::vector<Listener*> m_Listeners;   
-
-        /**
-         * @brief m_Processors is destructed before m_Listeners.
-         *        The processors are called in sequence, which will in turn 
-         *        deregister the registered processors as listeners, before m_Listeners is destroyed.
-         */
-        //ProcVector m_Processors; 
           
         /**
          * @brief 
          */
         float m_Volume{ 0.f };
 
-        /**
-         * @brief Helper function returning all audio processor plugins registered in the DAW
-         *        (currently a dummy list of two plugins).
-         * @return Vector of unique ptrs to the registered audio processors.
-         */
-        //ProcVector getProcessors();
-        
         /**
          * @brief Implementing the notify function of the Broadcaster interface.
          *        Sends a notification to all registered listeners.

@@ -21,9 +21,15 @@
     <ClCompile Include="src\Daw.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="src\PluginLoader.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\Daw.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="src\PluginLoader.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

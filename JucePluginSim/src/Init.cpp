@@ -1,11 +1,16 @@
 #include "Init.h"
 
-void Init(pul::Daw& daw)
+void AudioProcessorInit(pul::Daw& daw)
 {
-	std::cout << "Initializing stuff....\n";
-	std::cout << "Address of daw: " << &daw << std::endl;
-	
+	std::cout << "Initializing PluginSim.dll ...\n";
 	auto myProcessor = new pul::MyProcessor(daw);
-	std::cout << "Address of myProcessor: " << myProcessor << std::endl;
 	auto yourProcessor = new pul::YourProcessor(daw);
+}
+
+void AudioProcessorFinalise(pul::Daw& daw)
+{
+	for (auto& proc : daw.getAudioProcessors()) {
+		std::cout << "Deleting: " << proc->getName() << std::endl;
+		delete proc;
+	}
 }
