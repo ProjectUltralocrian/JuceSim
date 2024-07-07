@@ -7,6 +7,7 @@ namespace pul {
     MyProcessor::MyProcessor(Daw& daw)
         : m_Daw{ daw }
     {
+        m_Daw.registerAudioProcessor(this);
         m_Daw.registerListener(this);
     }
 

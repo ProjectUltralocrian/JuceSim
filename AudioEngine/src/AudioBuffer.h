@@ -1,8 +1,7 @@
 #ifndef AUDIOBUFFER_H
 #define AUDIOBUFFER_H
 
-
-#include "Helpers.h"
+#include "PulEngine.h"
 #include <concepts>
 #include <algorithm>
 #include <iostream>
@@ -64,25 +63,25 @@ namespace pul {
         } 
 
         using ProcessFunc = std::function<SampleType(SampleType)>;
-        void process(const ProcessFunc& func)
+        void process(const ProcessFunc& func) noexcept
         {
             for (size_t i = 0; i < m_BufSize; ++i) {
                 m_Buffer[i] = func(m_Buffer[i]);
             }
         }
 
-        void fillWith(SampleType value)
+        void fillWith(SampleType value) noexcept
         {
             auto v = value;
             process([=](SampleType x) {return v; });
         }
 
-        const SampleType* getReadPointer() const
+        const SampleType* getReadPointer() const noexcept
         {
             return m_Buffer;
         }
 
-        SampleType* getWritePointer()
+        SampleType* getWritePointer() noexcept
         {
             return m_Buffer;
         }
@@ -92,14 +91,14 @@ namespace pul {
             return m_BufSize;
         }
 
-        void copyFrom(AudioBuffer& other)
+        void copyFrom(const AudioBuffer& other) noexcept
         {
             ASSERT(m_BufSize == other.m_BufSize && m_Buffer != other.m_Buffer);
             ASSERT(m_Buffer && other.m_Buffer);
             *this = other;
         }
 
-        void addFrom(AudioBuffer& other)
+        void addFrom(const AudioBuffer& other) noexcept
         {
             ASSERT(m_BufSize == other.m_BufSize);
             for (size_t i = 0; i < m_BufSize; ++i) {

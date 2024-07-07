@@ -5,7 +5,10 @@
 namespace pul {
 
     YourProcessor::YourProcessor(Daw& daw)
-        : m_Daw{ daw } {}
+        : m_Daw{ daw } 
+    {
+        m_Daw.registerAudioProcessor(this);
+    }
 
 
     void YourProcessor::prepareToPlay()

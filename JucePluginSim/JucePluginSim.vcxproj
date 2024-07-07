@@ -21,13 +21,22 @@
   <ItemGroup>
     <ClInclude Include="src\DryWet.h" />
     <ClInclude Include="src\Gain.h" />
-    <ClInclude Include="src\JucePlugin.h" />
+    <ClInclude Include="src\Init.h" />
     <ClInclude Include="src\MyProcessor.h" />
     <ClInclude Include="src\YourProcessor.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="src\Init.cpp" />
     <ClCompile Include="src\MyProcessor.cpp" />
     <ClCompile Include="src\YourProcessor.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\AudioEngine\AudioEngine.vcxproj">
+      <Project>{55759641-a7ec-4893-b170-c336715dddde}</Project>
+    </ProjectReference>
+    <ProjectReference Include="..\JuceDawSim\JuceDawSim.vcxproj">
+      <Project>{bf652737-691e-4976-9cb1-5f0b28476537}</Project>
+    </ProjectReference>
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <VCProjectVersion>17.0</VCProjectVersion>
@@ -88,7 +97,7 @@
       <PreprocessorDefinitions>JUCE_DLL_BUILD;WIN32;_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
       <LanguageStandard>stdcpp20</LanguageStandard>
-      <AdditionalIncludeDirectories>$(SolutionDir)JuceDawSim\src;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(SolutionDir)AudioEngine\src;$(SolutionDir)JuceDawSim\src;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
@@ -104,7 +113,7 @@
       <PreprocessorDefinitions>JUCE_DLL_BUILD;WIN32;NDEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
       <LanguageStandard>stdcpp20</LanguageStandard>
-      <AdditionalIncludeDirectories>$(SolutionDir)JuceDawSim\src;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(SolutionDir)AudioEngine\src;$(SolutionDir)JuceDawSim\src;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
@@ -120,7 +129,7 @@
       <PreprocessorDefinitions>JUCE_DLL_BUILD;_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
       <LanguageStandard>stdcpp20</LanguageStandard>
-      <AdditionalIncludeDirectories>$(SolutionDir)JuceDawSim\src;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(SolutionDir)AudioEngine\src;$(SolutionDir)JuceDawSim\src;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
@@ -136,7 +145,7 @@
       <PreprocessorDefinitions>JUCE_DLL_BUILD;NDEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
       <LanguageStandard>stdcpp20</LanguageStandard>
-      <AdditionalIncludeDirectories>$(SolutionDir)JuceDawSim\src;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(SolutionDir)AudioEngine\src;$(SolutionDir)JuceDawSim\src;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>

@@ -1,16 +1,15 @@
 #ifndef YOURPROCESSOR_H
 #define YOURPROCESSOR_H
 
-#include "JucePlugin.h"
+#include "PulEngine.h"
 #include "AudioProcessor.h"
 #include "Gain.h"
 #include "DryWet.h"
 #include "Daw.h"
 
-
 namespace pul {
 
-    class JUCE_DLL YourProcessor : public AudioProcessor
+    class YourProcessor : public AudioProcessor
     {
     public:
         YourProcessor(Daw& daw);

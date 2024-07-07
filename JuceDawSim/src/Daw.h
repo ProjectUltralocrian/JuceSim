@@ -1,22 +1,23 @@
 #ifndef DAW_H
 #define DAW_H
 
-#include <vector>
-#include "AudioProcessor.h"
-#include <memory>
+#include "PulEngine.h"
 #include "Observer.h"
 
+#pragma comment(lib, "AudioEngine.lib")
+#include <memory>
 
 
 namespace pul {
 
-    using ProcVector = std::vector<std::unique_ptr<AudioProcessor>>;
+    //using ProcVector = std::vector<std::unique_ptr<AudioProcessor>>;
 
-    class Daw : public Broadcaster
+    class Daw : public AudioEngine,
+                public Broadcaster
     {
     public:
-        Daw();
-        void run();
+        //Daw() = default;
+        void run() override;
 
         /**
         * @brief Registers a pointer to a Listener instance,
@@ -31,18 +32,42 @@ namespace pul {
         void setVolume(float newVolume);
 
     private:
-        // m_Listeners MUST precede declaration of m_Processors, 
-        // otherwise the destruction will take place in the incorrect order...
+        /**
+         * @brief m_Listeners MUST precede declaration of m_Processors,
+         *        otherwise the destruction will take place in the incorrect order...
+         */
         std::vector<Listener*> m_Listeners;   
-        
-        // m_Processors is destructed before m_Listeners. 
-        // The processors are called in sequence, which will in turn 
-        // deregister the registered processors as listeners, before m_Listeners is destroyed.
-        ProcVector m_Processors; 
-                
+
+        /**
+         * @brief m_Processors is destructed before m_Listeners.
+         *        The processors are called in sequence, which will in turn 
+         *        deregister the registered processors as listeners, before m_Listeners is destroyed.
+         */
+        //ProcVector m_Processors; 
+          
+        /**
+         * @brief 
+         */
         float m_Volume{ 0.f };
-        ProcVector getProcessors();
+
+        /**
+         * @brief Helper function returning all audio processor plugins registered in the DAW
+         *        (currently a dummy list of two plugins).
+         * @return Vector of unique ptrs to the registered audio processors.
+         */
+        //ProcVector getProcessors();
+        
+        /**
+         * @brief Implementing the notify function of the Broadcaster interface.
+         *        Sends a notification to all registered listeners.
+         * @param msg: The message to be sent along with a reference to the broadcaster.
+         */
         void notify(std::string_view msg) const override;
+
+        /**
+         * @brief Simulating the play functionality of a daw (e.g. loading audio buffers and sending
+         *        them to registered processors for processing.
+         */
         void play();
     };
 }

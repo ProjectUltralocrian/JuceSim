@@ -3,7 +3,7 @@
 
 #include "AudioBuffer.h"
 #include <cstdint>
-#include "Helpers.h"
+#include "PulEngine.h"
 
 
 namespace pul {
@@ -27,6 +27,7 @@ namespace pul {
             ASSERT(m_Buffer);
 
         }
+
         void process()
         {
             m_DryBuffer.copyFrom(*m_Buffer);

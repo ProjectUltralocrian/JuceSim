@@ -2,7 +2,7 @@
 #define MYPROCESSOR_H
 
 
-#include "JucePlugin.h"
+#include "PulEngine.h"
 #include "AudioProcessor.h"
 #include "Gain.h"
 #include "Observer.h"
@@ -11,11 +11,12 @@
 
 namespace pul {
 
-    class JUCE_DLL MyProcessor : public AudioProcessor,
-        public Listener
+    class MyProcessor : public AudioProcessor,
+                                public Listener
     {
     public:
         MyProcessor(Daw& daw);
+        std::string_view getName() const override { return "My Gain Processor..."; }
         ~MyProcessor();
         void prepareToPlay() override;
         void processBlock(AudioBuffer<float>& buffer) override;

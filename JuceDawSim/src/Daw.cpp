@@ -1,8 +1,7 @@
+//#include "PulEngine.h"
+//#include "AudioBuffer.h"
 #include "Daw.h"
-#include "YourProcessor.h"
-#include "AudioBuffer.h"
-#include "MyProcessor.h"
-#include "Helpers.h"
+#include "AudioProcessor.h"
 #include <iostream>
 #include <memory>
 #include <array>
@@ -12,14 +11,19 @@
 
 namespace pul {
 
-    Daw::Daw()
+   /*Daw::Daw()
     {
         m_Processors = getProcessors();
     }
+    */
 
     void Daw::run()
     {
-        std::cout << "Simulating host DAW\n";
+        std::cout << "Simulating host DAW... :) \n";
+        std::cout << "Registered plugins: \n";
+        for (const auto& proc : getAudioProcessors()) {
+            std::cout << proc->getName() << std::endl;
+        }
 
         play();
     }
@@ -32,7 +36,7 @@ namespace pul {
         //Simulating calling the prepareToPlay function of
         //all registered audio processor plugins,
         //immediately before playing starts.     
-        for (const auto& proc : m_Processors) {
+        for (const auto& proc : getAudioProcessors()) {
             proc->prepareToPlay();
         }
 
@@ -53,7 +57,7 @@ namespace pul {
         //Calling the audio callback function (processBlock)
         //on all registered audio processor plugins in sequence.
         for (auto& buf : buffers) {
-            for (const auto& proc : m_Processors) {
+            for (const auto& proc : getAudioProcessors()) {
                 proc->processBlock(buf);
             }
         }
@@ -67,6 +71,7 @@ namespace pul {
         }
     }
     
+    /*
     ProcVector Daw::getProcessors()
     {
         ProcVector output;
@@ -74,7 +79,7 @@ namespace pul {
         output.emplace_back(std::make_unique<YourProcessor>(*this));
         return output;
     }
-
+    */
     void Daw::setVolume(float newVolume)
     {
         ASSERT(-60.f <= newVolume && newVolume <= 15.f);
@@ -94,6 +99,7 @@ namespace pul {
     {
         std::erase_if(m_Listeners, [=](Listener* l) {return l == listener; });
     }
+
 
     void Daw::notify(std::string_view msg) const
     {
