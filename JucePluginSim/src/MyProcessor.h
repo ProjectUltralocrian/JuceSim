@@ -4,7 +4,6 @@
 
 #include "AudioEngine.h"
 #include "Gain.h"
-#include "Observer.h"
 #include <string>
 
 namespace pul {

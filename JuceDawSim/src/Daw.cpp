@@ -1,4 +1,4 @@
-#include "AudioEngine.h"
+//#include "AudioEngine.h"
 #include "Daw.h"
 
 #include <iostream>
@@ -6,8 +6,7 @@
 namespace pul {
 	void Daw::run()
 	{
-        auto dllFileName = getDllNameFromLua("config.lua");
-
+        auto dllFileName = getDllNameFromLua("./config.lua");
 
         size_t newsize = strlen(dllFileName.c_str()) + 1;
         wchar_t* wcstring = new wchar_t[newsize];

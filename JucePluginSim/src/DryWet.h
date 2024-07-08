@@ -1,7 +1,6 @@
 #ifndef DRYWET_H
 #define DRYWET_H
 
-#include "AudioBuffer.h"
 #include <cstdint>
 #include "AudioEngine.h"
 

@@ -2,7 +2,7 @@
 #define PUL_ENGINE_H
 
 #include "Observer.h"
-#include "lua_wrapper.h"
+#include "LuaWrapper/src/lua_wrapper.h"
 
 #include <cmath>
 #include <vector>
