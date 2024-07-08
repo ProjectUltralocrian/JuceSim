@@ -1,3 +1,0 @@
-[submodule "AudioEngine/LuaWrapper"]
-	path = AudioEngine/LuaWrapper
-	url = https://github.com/ProjectUltralocrian/lua_wrapper.git
