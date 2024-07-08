@@ -14,12 +14,12 @@ namespace pul {
     {
     public:
         using DynLibFunc = void(__cdecl*)(AudioEngine&);
-        explicit PluginLoader(const wchar_t* dllName);
-        PluginLoader(const wchar_t* dllName, AudioEngine* engine);
+        PUL_API explicit PluginLoader(const wchar_t* dllName);
+        PUL_API PluginLoader(const wchar_t* dllName, AudioEngine* engine);
         PluginLoader(const PluginLoader&) = delete;
-        ~PluginLoader();
-        bool callFuncOnPlugin(const char* funcName);
-        bool isLoadSuccessful() const noexcept { return m_RunTimeLinkSuccess; }
+        PUL_API ~PluginLoader();
+        PUL_API bool callFuncOnPlugin(const char* funcName);
+        PUL_API bool isLoadSuccessful() const noexcept { return m_RunTimeLinkSuccess; }
     private:
         HINSTANCE m_DynLib{ nullptr };
         AudioEngine* m_Engine{ nullptr };

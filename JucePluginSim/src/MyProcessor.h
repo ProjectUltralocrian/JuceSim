@@ -2,8 +2,7 @@
 #define MYPROCESSOR_H
 
 
-#include "PulEngine.h"
-#include "AudioProcessor.h"
+#include "AudioEngine.h"
 #include "Gain.h"
 #include "Observer.h"
 #include <string>

@@ -1,10 +1,8 @@
 #ifndef DAW_H
 #define DAW_H
 
-#include "PulEngine.h"
-#include "Observer.h"
+#include "AudioEngine.h"
 
-#pragma comment(lib, "AudioEngine.lib")
 #include <memory>
 
 
@@ -12,7 +10,7 @@ namespace pul {
 
     class Daw : public AudioEngine
     {
-
+        void run() override;
     };
 }
 

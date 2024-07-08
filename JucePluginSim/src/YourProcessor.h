@@ -1,8 +1,7 @@
 #ifndef YOURPROCESSOR_H
 #define YOURPROCESSOR_H
 
-#include "PulEngine.h"
-#include "AudioProcessor.h"
+#include "AudioEngine.h"
 #include "Gain.h"
 #include "DryWet.h"
 

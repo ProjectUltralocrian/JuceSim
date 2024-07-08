@@ -30,6 +30,15 @@
     <ClInclude Include="src\PluginLoader.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="AudioEngine.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="LuaWrapper\src\lua_wrapper.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="LuaWrapper\src\result.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\PulEngine.cpp">
@@ -41,5 +50,18 @@
     <ClCompile Include="src\PluginLoader.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="LuaWrapper\src\lua_wrapper.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <Library Include="LuaWrapper\lua-5.4.6\liblua54.a">
+      <Filter>Resource Files</Filter>
+    </Library>
+  </ItemGroup>
+  <ItemGroup>
+    <Text Include="..\x64\Debug\config.lua">
+      <Filter>Resource Files</Filter>
+    </Text>
   </ItemGroup>
 </Project>

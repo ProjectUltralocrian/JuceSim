@@ -2,7 +2,7 @@
 #define GAIN_H
 
 #include <cmath>
-#include "AudioBuffer.h"
+#include "AudioEngine.h"
 
 namespace pul {
 

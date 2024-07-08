@@ -46,20 +46,20 @@ namespace pul {
 
     bool PluginLoader::callFuncOnPlugin(const char* funcName)
     {
-        if (m_DynLib)
-        {
-            ASSERT(m_Engine != nullptr);
-            DynLibFunc ProcAdd = (DynLibFunc)GetProcAddress(m_DynLib, funcName);
+        ASSERT(m_Engine != nullptr);
 
-            // If the function address is valid, call the function.
-            if (ProcAdd)
-            {
-                m_RunTimeLinkSuccess = true;
-                ProcAdd(*m_Engine);
-                return true;
-            }
-            return false;
-        }
+        if (!m_DynLib) return false;
+       
+        DynLibFunc ProcAdd = (DynLibFunc)GetProcAddress(m_DynLib, funcName);
+
+        // If the function address is valid, call the function.
+        if (!ProcAdd) return false;
+
+        m_RunTimeLinkSuccess = true;
+
+        ProcAdd(*m_Engine);
+
+        return true;
     }
 
 }

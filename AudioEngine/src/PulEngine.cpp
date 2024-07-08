@@ -18,23 +18,11 @@ namespace pul {
             processor->setHostEngine(this);
             m_Processors.push_back(processor);
         }
-
     }
 
     void AudioEngine::run()
     {
-        PluginLoader loader(L"PluginSim.dll", this);
-
-        std::cout << "Starting audio engine... :) \n";
-        auto processors = getAudioProcessors();
-        if (processors.size()) {
-            std::cout << "Registered plugins: \n";
-        }
-        for (const auto& proc : processors) {
-            std::cout << "  - " << proc->getName() << std::endl;
-        }
-
-        play();
+        
 
     }
 
@@ -86,6 +74,13 @@ namespace pul {
         ASSERT(-60.f <= newVolume && newVolume <= 15.f);
         m_Volume = newVolume;
         notify("Volume has been changed by host DAW...");
+    }
+
+    PUL_API std::string AudioEngine::getDllNameFromLua(const char* luaFileName)
+    {
+        m_Lua.exec_file(luaFileName);
+        auto dllName = m_Lua.get_string("dllName");
+        return dllName.okOrDefault("File not found.");
     }
 
     void AudioEngine::registerListener(Listener* listener)

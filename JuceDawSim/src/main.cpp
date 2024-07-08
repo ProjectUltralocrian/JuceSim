@@ -8,5 +8,7 @@ int main()
 
     delete daw;
 
+    std::cin.get();
+
     return EXIT_SUCCESS;
 }

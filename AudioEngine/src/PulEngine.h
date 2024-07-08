@@ -1,8 +1,8 @@
 #ifndef PUL_ENGINE_H
 #define PUL_ENGINE_H
 
-//#include "AudioProcessor.h"
 #include "Observer.h"
+#include "lua_wrapper.h"
 
 #include <cmath>
 #include <vector>
@@ -60,15 +60,15 @@ namespace pul {
 		return output;
 	}
 
-	class PUL_API AudioEngine : public Broadcaster
+	class AudioEngine : public Broadcaster
 	{
 	public:
-		virtual void run();
-		virtual void registerAudioProcessor(AudioProcessor* processor);
-		virtual std::vector<AudioProcessor*> getAudioProcessors() const;
-		virtual ~AudioEngine() = default;
-		void registerListener(Listener* listener) override;
-		void deregisterListener(Listener* listener) override;
+		PUL_API virtual void run();
+		PUL_API virtual void registerAudioProcessor(AudioProcessor* processor);
+		PUL_API virtual std::vector<AudioProcessor*> getAudioProcessors() const;
+		PUL_API virtual ~AudioEngine() = default;
+		PUL_API void registerListener(Listener* listener) override;
+		PUL_API void deregisterListener(Listener* listener) override;
 
 
 		/**
@@ -76,18 +76,20 @@ namespace pul {
 		 *        Sends a notification to all registered listeners.
 		 * @param msg: The message to be sent along with a reference to the broadcaster.
 		 */
-		void notify(std::string_view msg) const override;
+		PUL_API void notify(std::string_view msg) const override;
 
 		/**
 		 * @brief Simulating the play functionality of a daw (e.g. loading audio buffers and sending
 		 *        them to registered processors for processing.
 		 */
-		void play();
+		PUL_API virtual void play();
 		inline float getVolume() const { return m_Volume; }
-		void setVolume(float newVolume);
+		PUL_API void setVolume(float newVolume);
+
+		PUL_API std::string getDllNameFromLua(const char* luaFileName);
 
 	private:
-		std::vector<AudioProcessor*> m_Processors{};
+	    std::vector<AudioProcessor*> m_Processors{};
 		/**
 		 * @brief m_Listeners MUST precede declaration of m_Processors,
 		 *        otherwise the destruction will take place in the incorrect order...
@@ -98,6 +100,8 @@ namespace pul {
 		 * @brief
 		 */
 		float m_Volume{ 0.f };
+
+		LuaInstance m_Lua{};
 	};
 }
 
