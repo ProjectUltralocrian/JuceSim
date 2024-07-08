@@ -4,23 +4,23 @@
 
 namespace pul {
 
-    MyProcessor::MyProcessor(Daw& daw)
-        : m_Daw{ daw }
+    MyProcessor::MyProcessor(AudioEngine& daw)
+        : m_Engine{ daw }
     {
-        m_Daw.registerAudioProcessor(this);
-        m_Daw.registerListener(this);
+        m_Engine.registerAudioProcessor(this);
+        m_Engine.registerListener(this);
     }
 
     MyProcessor::~MyProcessor()
     {
-        m_Daw.deregisterListener(this);
+        m_Engine.deregisterListener(this);
         //TODO: registerAudioProcessor
     }
 
     void MyProcessor::onNotified(const Broadcaster& broadcaster, std::string_view msg)
     {
         std::cout << msg << std::endl;
-        if (const auto* daw = dynamic_cast<const Daw*>(&broadcaster)) {
+        if (const auto* daw = dynamic_cast<const AudioEngine*>(&broadcaster)) {
             m_LevelDb = daw->getVolume();
             std::cout << "DAW volume: " << daw->getVolume() << std::endl;
             m_Gain.changeLevelByDb(m_LevelDb);

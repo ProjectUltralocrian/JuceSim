@@ -2,11 +2,13 @@
 #define PUL_ENGINE_H
 
 //#include "AudioProcessor.h"
+#include "Observer.h"
+
 #include <cmath>
 #include <vector>
 #include <numbers>
 #include <stdexcept>
-
+#include <array>
 
 
 #ifdef PUL_DLL_BUILD
@@ -58,15 +60,44 @@ namespace pul {
 		return output;
 	}
 
-	class PUL_API AudioEngine
+	class PUL_API AudioEngine : public Broadcaster
 	{
 	public:
 		virtual void run();
 		virtual void registerAudioProcessor(AudioProcessor* processor);
 		virtual std::vector<AudioProcessor*> getAudioProcessors() const;
 		virtual ~AudioEngine() = default;
+		void registerListener(Listener* listener) override;
+		void deregisterListener(Listener* listener) override;
+
+
+		/**
+		 * @brief Implementing the notify function of the Broadcaster interface.
+		 *        Sends a notification to all registered listeners.
+		 * @param msg: The message to be sent along with a reference to the broadcaster.
+		 */
+		void notify(std::string_view msg) const override;
+
+		/**
+		 * @brief Simulating the play functionality of a daw (e.g. loading audio buffers and sending
+		 *        them to registered processors for processing.
+		 */
+		void play();
+		inline float getVolume() const { return m_Volume; }
+		void setVolume(float newVolume);
+
 	private:
 		std::vector<AudioProcessor*> m_Processors{};
+		/**
+		 * @brief m_Listeners MUST precede declaration of m_Processors,
+		 *        otherwise the destruction will take place in the incorrect order...
+		 */
+		std::vector<Listener*> m_Listeners;
+
+		/**
+		 * @brief
+		 */
+		float m_Volume{ 0.f };
 	};
 }
 

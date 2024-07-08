@@ -34,9 +34,6 @@
     <ProjectReference Include="..\AudioEngine\AudioEngine.vcxproj">
       <Project>{55759641-a7ec-4893-b170-c336715dddde}</Project>
     </ProjectReference>
-    <ProjectReference Include="..\JuceDawSim\JuceDawSim.vcxproj">
-      <Project>{bf652737-691e-4976-9cb1-5f0b28476537}</Project>
-    </ProjectReference>
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <VCProjectVersion>17.0</VCProjectVersion>

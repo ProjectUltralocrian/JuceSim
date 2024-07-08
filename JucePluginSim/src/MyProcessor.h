@@ -6,7 +6,6 @@
 #include "AudioProcessor.h"
 #include "Gain.h"
 #include "Observer.h"
-#include "Daw.h"
 #include <string>
 
 namespace pul {
@@ -15,13 +14,13 @@ namespace pul {
                                 public Listener
     {
     public:
-        MyProcessor(Daw& daw);
+        MyProcessor(AudioEngine& daw);
         std::string_view getName() const override { return "My Gain Processor..."; }
         ~MyProcessor();
         void prepareToPlay() override;
         void processBlock(AudioBuffer<float>& buffer) override;
     private:
-        Daw& m_Daw;
+        AudioEngine& m_Engine;
         Gain<float> m_Gain;
         float m_LevelDb{ 0.f };
         void onNotified(const Broadcaster&, std::string_view msg) override;

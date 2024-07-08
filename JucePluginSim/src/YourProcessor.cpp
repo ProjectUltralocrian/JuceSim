@@ -4,10 +4,10 @@
 
 namespace pul {
 
-    YourProcessor::YourProcessor(Daw& daw)
-        : m_Daw{ daw } 
+    YourProcessor::YourProcessor(AudioEngine& engine)
+        : m_Engine{ engine } 
     {
-        m_Daw.registerAudioProcessor(this);
+        m_Engine.registerAudioProcessor(this);
     }
 
 

@@ -137,11 +137,13 @@
   <ItemGroup>
     <ClInclude Include="src\AudioBuffer.h" />
     <ClInclude Include="src\AudioProcessor.h" />
+    <ClInclude Include="src\PluginLoader.h" />
     <ClInclude Include="src\PulEngine.h" />
     <ClInclude Include="src\Observer.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\AudioProcessor.cpp" />
+    <ClCompile Include="src\PluginLoader.cpp" />
     <ClCompile Include="src\PulEngine.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
