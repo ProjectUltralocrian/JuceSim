@@ -3,11 +3,13 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.10.34928.147
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "JuceDawSim", "JuceDawSim\JuceDawSim.vcxproj", "{BF652737-691E-4976-9CB1-5F0B28476537}"
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "DawSim", "JuceDawSim\JuceDawSim.vcxproj", "{BF652737-691E-4976-9CB1-5F0B28476537}"
 EndProject
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "JucePluginSim", "JucePluginSim\JucePluginSim.vcxproj", "{49F030AC-9A28-43AD-9513-9AF03E83EB05}"
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "PluginSim", "JucePluginSim\JucePluginSim.vcxproj", "{49F030AC-9A28-43AD-9513-9AF03E83EB05}"
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "AudioEngine", "AudioEngine\AudioEngine.vcxproj", "{55759641-A7EC-4893-B170-C336715DDDDE}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Logger", "Logger\Logger.vcxproj", "{FF6B4920-09CD-421C-8166-B6158B4C7D8A}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -41,6 +43,14 @@ Global
 		{55759641-A7EC-4893-B170-C336715DDDDE}.Release|x64.Build.0 = Release|x64
 		{55759641-A7EC-4893-B170-C336715DDDDE}.Release|x86.ActiveCfg = Release|Win32
 		{55759641-A7EC-4893-B170-C336715DDDDE}.Release|x86.Build.0 = Release|Win32
+		{FF6B4920-09CD-421C-8166-B6158B4C7D8A}.Debug|x64.ActiveCfg = Debug|x64
+		{FF6B4920-09CD-421C-8166-B6158B4C7D8A}.Debug|x64.Build.0 = Debug|x64
+		{FF6B4920-09CD-421C-8166-B6158B4C7D8A}.Debug|x86.ActiveCfg = Debug|Win32
+		{FF6B4920-09CD-421C-8166-B6158B4C7D8A}.Debug|x86.Build.0 = Debug|Win32
+		{FF6B4920-09CD-421C-8166-B6158B4C7D8A}.Release|x64.ActiveCfg = Release|x64
+		{FF6B4920-09CD-421C-8166-B6158B4C7D8A}.Release|x64.Build.0 = Release|x64
+		{FF6B4920-09CD-421C-8166-B6158B4C7D8A}.Release|x86.ActiveCfg = Release|Win32
+		{FF6B4920-09CD-421C-8166-B6158B4C7D8A}.Release|x86.Build.0 = Release|Win32
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

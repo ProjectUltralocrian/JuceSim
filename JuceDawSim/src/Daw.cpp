@@ -1,7 +1,11 @@
-//#include "AudioEngine.h"
+#include "AudioEngine.h"
 #include "Daw.h"
-
+#include <chrono>
 #include <iostream>
+#include <thread>
+
+
+using namespace std::chrono_literals;
 
 namespace pul {
 	void Daw::run()
@@ -19,6 +23,8 @@ namespace pul {
         }
 
         play();
+
+        std::this_thread::sleep_for(1000ms);
 	}
 }
 

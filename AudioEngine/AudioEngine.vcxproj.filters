@@ -39,6 +39,9 @@
     <ClInclude Include="LuaWrapper\src\result.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="src\EngineLogger.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\PulEngine.cpp">
@@ -51,6 +54,9 @@
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="LuaWrapper\src\lua_wrapper.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\EngineLogger.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>

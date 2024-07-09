@@ -77,7 +77,7 @@
       <PreprocessorDefinitions>PUL_DLL_BUILD;WIN32;_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
       <LanguageStandard>stdcpp20</LanguageStandard>
-      <AdditionalIncludeDirectories>$(SolutionDir)AudioEngine\src;$(SolutionDir)AudioEngine;</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(SolutionDir)Logger\src;$(SolutionDir)AudioEngine\src;$(SolutionDir)AudioEngine;</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
@@ -95,7 +95,7 @@
       <PreprocessorDefinitions>PUL_DLL_BUILD;WIN32;NDEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
       <LanguageStandard>stdcpp20</LanguageStandard>
-      <AdditionalIncludeDirectories>$(SolutionDir)AudioEngine\src;$(SolutionDir)AudioEngine;</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(SolutionDir)Logger\src;$(SolutionDir)AudioEngine\src;$(SolutionDir)AudioEngine;</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
@@ -113,7 +113,7 @@
       <PreprocessorDefinitions>PUL_DLL_BUILD;_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
       <LanguageStandard>stdcpp20</LanguageStandard>
-      <AdditionalIncludeDirectories>$(SolutionDir)AudioEngine\src;$(SolutionDir)AudioEngine;</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(SolutionDir)Logger\src;$(SolutionDir)AudioEngine\src;$(SolutionDir)AudioEngine;</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
@@ -131,7 +131,7 @@
       <PreprocessorDefinitions>PUL_DLL_BUILD;NDEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
       <LanguageStandard>stdcpp20</LanguageStandard>
-      <AdditionalIncludeDirectories>$(SolutionDir)AudioEngine\src;$(SolutionDir)AudioEngine;</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(SolutionDir)Logger\src;$(SolutionDir)AudioEngine\src;$(SolutionDir)AudioEngine;</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
@@ -148,6 +148,7 @@
     <ClInclude Include="LuaWrapper\src\result.h" />
     <ClInclude Include="src\AudioBuffer.h" />
     <ClInclude Include="src\AudioProcessor.h" />
+    <ClInclude Include="src\EngineLogger.h" />
     <ClInclude Include="src\PluginLoader.h" />
     <ClInclude Include="src\PulEngine.h" />
     <ClInclude Include="src\Observer.h" />
@@ -155,6 +156,7 @@
   <ItemGroup>
     <ClCompile Include="LuaWrapper\src\lua_wrapper.cpp" />
     <ClCompile Include="src\AudioProcessor.cpp" />
+    <ClCompile Include="src\EngineLogger.cpp" />
     <ClCompile Include="src\PluginLoader.cpp" />
     <ClCompile Include="src\PulEngine.cpp" />
   </ItemGroup>
@@ -163,6 +165,11 @@
   </ItemGroup>
   <ItemGroup>
     <Text Include="..\x64\Debug\config.lua" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Logger\Logger.vcxproj">
+      <Project>{ff6b4920-09cd-421c-8166-b6158b4c7d8a}</Project>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

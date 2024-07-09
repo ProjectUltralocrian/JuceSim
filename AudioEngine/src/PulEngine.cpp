@@ -27,7 +27,7 @@ namespace pul {
 
     void AudioEngine::play()
     {
-        std::cout << "Playing...\n";
+        PUL_INFO("Playing...");
         
         setVolume(3.5218f); //(3.52dB == 1.5x gain increase)
 
@@ -70,7 +70,7 @@ namespace pul {
         for (auto& buf : buffers) {
             auto p = buf.getReadPointer();
             for (size_t i = 0; i < buf.getNumSamples(); ++i) {
-                std::cout << std::format("SAMPLE {}: {:.4f}\n", i, p[i]);
+                PUL_INFO(std::format("SAMPLE {}: {:.4f}", i, p[i]));
             }
         }
     }
@@ -97,7 +97,7 @@ namespace pul {
             }
         }
         else {
-            std::cerr << "No plugin dll filenames found in config.lua...\n";
+            PUL_INFO("No plugin dll filenames found in config.lua...");
         }
     }
 

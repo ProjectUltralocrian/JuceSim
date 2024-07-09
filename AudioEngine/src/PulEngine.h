@@ -1,9 +1,11 @@
 #ifndef PUL_ENGINE_H
 #define PUL_ENGINE_H
 
+
 #include "Observer.h"
 #include "LuaWrapper/src/lua_wrapper.h"
-//#include "PluginLoader.h"
+
+#include "EngineLogger.h"
 
 
 #include <cmath>
@@ -12,6 +14,7 @@
 #include <stdexcept>
 #include <array>
 #include <optional>
+
 
 
 #ifdef PUL_DLL_BUILD
@@ -66,11 +69,13 @@ namespace pul {
 	class AudioEngine : public Broadcaster
 	{
 	public:
+		PUL_API AudioEngine() = default;
+		PUL_API virtual ~AudioEngine();
 		PUL_API virtual void run();
 		PUL_API virtual void registerAudioProcessor(AudioProcessor* processor);
 		PUL_API virtual std::vector<AudioProcessor*> getAudioProcessors() const;
 		
-		PUL_API virtual ~AudioEngine();
+		
 		PUL_API void registerListener(Listener* listener) override;
 		PUL_API void deregisterListener(Listener* listener) override;
 
@@ -118,6 +123,8 @@ namespace pul {
 		 * @brief
 		 */
 		float m_Volume{ 0.f };
+
+		EngineLogger m_Logger{};
 
 		std::optional<std::vector<std::string>> getDllNamesFromLua(const char* luaFileName, const char* varName);
 	};
