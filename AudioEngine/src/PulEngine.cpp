@@ -20,16 +20,22 @@ namespace pul {
         }
     }
 
-    void AudioEngine::run()
-    {
-        
-
+    void AudioEngine::run() 
+    {      
+        play();
     }
 
     void AudioEngine::play()
     {
         std::cout << "Playing...\n";
+        
         setVolume(3.5218f); //(3.52dB == 1.5x gain increase)
+
+        //Simulating getting config value from Lua file.
+        auto newVolume = m_Lua.get_number("volume");
+        if (newVolume)
+            setVolume(static_cast<float>(newVolume.unwrap()));
+
 
         //Simulating calling the prepareToPlay function of
         //all registered audio processor plugins,
@@ -76,11 +82,45 @@ namespace pul {
         notify("Volume has been changed by host DAW...");
     }
 
-    PUL_API std::string AudioEngine::getDllNameFromLua(const char* luaFileName)
+    void AudioEngine::getAndRegisterPluginsFromLua(const char* luaFileName)
     {
-        m_Lua.exec_file(luaFileName);
-        auto dllName = m_Lua.get_string("dllName");
-        return dllName.okOrDefault("File not found.");
+        auto dllFileNames = getDllNamesFromLua(luaFileName, "plugins");
+        if (dllFileNames) {
+            for (const auto& dll : dllFileNames.value()) {
+                size_t newsize = strlen(dll.c_str()) + 1;
+                wchar_t* wcstring = new wchar_t[newsize];
+                size_t convertedChars = 0;
+                mbstowcs_s(&convertedChars, wcstring, newsize, dll.c_str(), _TRUNCATE);
+                auto loader = new PluginLoader(wcstring, this);
+                m_Loaders.push_back(loader);
+                delete[]wcstring;
+            }
+        }
+        else {
+            std::cerr << "No plugin dll filenames found in config.lua...\n";
+        }
+    }
+
+    std::optional<std::vector<std::string>> AudioEngine::getDllNamesFromLua(const char* luaFileName, const char* varName)
+    {
+        if (!m_Lua.exec_file(luaFileName)) {
+            std::cerr << luaFileName << " could not be found or opened...\n";
+            return std::nullopt;
+        } 
+        auto dllNames = m_Lua.get_all_values_in_table(varName);
+        
+        if (dllNames)
+            return dllNames.unwrap();
+        else
+            return std::nullopt;
+    }
+
+    
+    AudioEngine::~AudioEngine()
+    {
+        for (auto loader : m_Loaders) {
+            delete loader;
+        }
     }
 
     void AudioEngine::registerListener(Listener* listener)
@@ -103,5 +143,8 @@ namespace pul {
             listener->onNotified(*this, msg);
         }
     }
+
+
+
 
 }

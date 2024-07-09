@@ -3,12 +3,15 @@
 
 #include "Observer.h"
 #include "LuaWrapper/src/lua_wrapper.h"
+//#include "PluginLoader.h"
+
 
 #include <cmath>
 #include <vector>
 #include <numbers>
 #include <stdexcept>
 #include <array>
+#include <optional>
 
 
 #ifdef PUL_DLL_BUILD
@@ -30,8 +33,8 @@
 
 
 namespace pul {
-
 	class AudioProcessor;
+	class PluginLoader;
 
 	class NotImplementedException : public std::logic_error
 	{
@@ -66,7 +69,8 @@ namespace pul {
 		PUL_API virtual void run();
 		PUL_API virtual void registerAudioProcessor(AudioProcessor* processor);
 		PUL_API virtual std::vector<AudioProcessor*> getAudioProcessors() const;
-		PUL_API virtual ~AudioEngine() = default;
+		
+		PUL_API virtual ~AudioEngine();
 		PUL_API void registerListener(Listener* listener) override;
 		PUL_API void deregisterListener(Listener* listener) override;
 
@@ -86,22 +90,36 @@ namespace pul {
 		inline float getVolume() const { return m_Volume; }
 		PUL_API void setVolume(float newVolume);
 
-		PUL_API std::string getDllNameFromLua(const char* luaFileName);
+		/**
+		 * @brief Gets plugins from specified Lua config file. The names of the dll's
+		 *		  should be listed as strings in Lua table, in a variable called "plugins".
+		 *		  If the specified config file doesn't exist, if the "plugins" table doesn't
+		 *		  exist, or there are no correct dll's in the table, this function logs a
+		          relevant error message, but otherwise does nothing.
+		 * @param luaFileName: The name of the Lua config file.
+		 */
+		PUL_API void getAndRegisterPluginsFromLua(const char* luaFileName);
+
+	protected:
+		LuaInstance m_Lua{};
+		std::vector<PluginLoader*> m_Loaders{};
 
 	private:
-	    std::vector<AudioProcessor*> m_Processors{};
+	    
 		/**
 		 * @brief m_Listeners MUST precede declaration of m_Processors,
 		 *        otherwise the destruction will take place in the incorrect order...
 		 */
 		std::vector<Listener*> m_Listeners;
 
+		std::vector<AudioProcessor*> m_Processors{};
+
 		/**
 		 * @brief
 		 */
 		float m_Volume{ 0.f };
 
-		LuaInstance m_Lua{};
+		std::optional<std::vector<std::string>> getDllNamesFromLua(const char* luaFileName, const char* varName);
 	};
 }
 

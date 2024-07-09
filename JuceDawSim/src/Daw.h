@@ -3,9 +3,6 @@
 
 #include "AudioEngine.h"
 
-#include <memory>
-
-
 namespace pul {
 
     class Daw : public AudioEngine
