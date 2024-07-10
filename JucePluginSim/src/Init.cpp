@@ -7,7 +7,7 @@ void AudioProcessorInit(pul::AudioEngine& engine)
 	auto yourProcessor = new pul::YourProcessor(engine);
 }
 
-void AudioProcessorFinalise(pul::AudioEngine& engine)
+void AudioProcessorShutdown(pul::AudioEngine& engine)
 {
 	for (auto& proc : engine.getAudioProcessors()) {
 		std::cout << "Deleting: " << proc->getName() << std::endl;

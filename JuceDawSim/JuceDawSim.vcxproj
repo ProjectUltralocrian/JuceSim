@@ -154,6 +154,9 @@
     <ProjectReference Include="..\AudioEngine\AudioEngine.vcxproj">
       <Project>{55759641-a7ec-4893-b170-c336715dddde}</Project>
     </ProjectReference>
+    <ProjectReference Include="..\Logger\Logger.vcxproj">
+      <Project>{ff6b4920-09cd-421c-8166-b6158b4c7d8a}</Project>
+    </ProjectReference>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\Daw.h" />

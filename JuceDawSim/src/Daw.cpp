@@ -13,14 +13,19 @@ namespace pul {
 	{
         getAndRegisterPluginsFromLua("config.lua");
 
-        std::cout << "Starting DAW... :)) \n";
+        EngineLogger::Init(Logger::LogLevel::Info);
+
+
+        PUL_INFO("Starting DAW... :))");
+        //EngineLogger::getLogger().Info("Hello");
+
 
         auto processors = getAudioProcessors();
         if (processors.size()) {
-            std::cout << "Registered plugins: \n";
+            PUL_INFO("Registered plugins:");
         }
         for (const auto& proc : processors) {
-            std::cout << "  - " << proc->getName() << std::endl;
+            PUL_INFO(std::format("  - {}", proc->getName()));
         }
 
         play();

@@ -5,8 +5,11 @@
 using namespace std::literals;
 
 namespace pul {
-	Logger::Logger()
-		: m_Thread{ [this]() {Worker(); } } {}
+	Logger::Logger(Logger::LogLevel level)
+		: m_Thread{
+		[this]() {Worker(); }
+	} {}
+
 
 	Logger::~Logger()
 	{
@@ -27,7 +30,7 @@ namespace pul {
 		m_CondVar.notify_one();
 	}
 
-	void Logger::Worker() const
+	void Logger::Worker()
 	{
 		Info("Initializing Logger on separate thread...");
 
@@ -43,7 +46,7 @@ namespace pul {
 			log(msg, LogLevel::Warning);
 		}
 	}
-	void Logger::log(std::string_view msg, LogLevel level) const
+	void Logger::log(std::string_view msg, LogLevel level)
 	{
 		m_OutStream << std::format("[{}] {}\n", toString(level), msg);
 

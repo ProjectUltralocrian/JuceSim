@@ -32,12 +32,12 @@ namespace pul {
     PluginLoader::~PluginLoader()
     {
         if (m_DynLib) {
-            auto ProcAdd = (DynLibFunc)GetProcAddress(m_DynLib, "AudioProcessorFinalise");
+            auto ProcAdd = (DynLibFunc)GetProcAddress(m_DynLib, "AudioProcessorShutdown");
 
             if (ProcAdd)
             {
                 ASSERT(m_Engine != nullptr);
-                std::cout << "Finalising...\n";
+                std::cout << "Shutting down ...\n";
                 ProcAdd(*m_Engine);
             }
             m_FreeResult = FreeLibrary(m_DynLib);

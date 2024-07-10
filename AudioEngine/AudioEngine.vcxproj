@@ -158,6 +158,7 @@
     <ClInclude Include="AudioEngine.h" />
     <ClInclude Include="src\AudioBuffer.h" />
     <ClInclude Include="src\AudioProcessor.h" />
+    <ClInclude Include="src\Defines.h" />
     <ClInclude Include="src\EngineLogger.h" />
     <ClInclude Include="src\PluginLoader.h" />
     <ClInclude Include="src\PulEngine.h" />
