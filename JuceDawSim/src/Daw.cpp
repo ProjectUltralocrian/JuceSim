@@ -1,5 +1,6 @@
-#include "AudioEngine.h"
 #include "Daw.h"
+#include "AudioEngine.h"
+
 #include <chrono>
 #include <iostream>
 #include <thread>
@@ -12,7 +13,7 @@ namespace pul {
 	{
         getAndRegisterPluginsFromLua("config.lua");
 
-        std::cout << "Starting DAW... :) \n";
+        std::cout << "Starting DAW... :)) \n";
 
         auto processors = getAudioProcessors();
         if (processors.size()) {

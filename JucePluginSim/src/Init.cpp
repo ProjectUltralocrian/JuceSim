@@ -2,7 +2,7 @@
 
 void AudioProcessorInit(pul::AudioEngine& engine)
 {
-	std::cout << "Initializing PluginSim.dll ...\n";
+	std::cout << "Initializing PluginSim.dll ... :)\n";
 	auto myProcessor = new pul::MyProcessor(engine);
 	auto yourProcessor = new pul::YourProcessor(engine);
 }
