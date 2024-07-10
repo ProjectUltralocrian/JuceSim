@@ -1,6 +1,6 @@
 #include "MyProcessor.h"
 #include <iostream>
-
+#include <format>
 
 namespace pul {
 
@@ -22,7 +22,7 @@ namespace pul {
         std::cout << msg << std::endl;
         if (const auto* daw = dynamic_cast<const AudioEngine*>(&broadcaster)) {
             m_LevelDb = daw->getVolume();
-            std::cout << "DAW volume: " << daw->getVolume() << std::endl;
+            PUL_INFO(std::format("DAW volume: {}", daw->getVolume()));
             m_Gain.changeLevelByDb(m_LevelDb);
             std::cout << "m_Gain level: " << m_Gain.level() << std::endl;
         }

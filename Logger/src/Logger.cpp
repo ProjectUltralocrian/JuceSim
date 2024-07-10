@@ -32,8 +32,6 @@ namespace pul {
 
 	void Logger::Worker()
 	{
-		Info("Initializing Logger on separate thread...");
-
 		while (!m_Finished)
 		{
 			std::unique_lock<std::mutex> lock(m_Mutex);

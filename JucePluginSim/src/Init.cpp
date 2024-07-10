@@ -9,7 +9,7 @@ void AudioProcessorInit(pul::AudioEngine& engine)
 
 void AudioProcessorShutdown(pul::AudioEngine& engine)
 {
-	for (auto& proc : engine.getAudioProcessors()) {
+	for (auto* proc : engine.getAudioProcessors()) {
 		std::cout << "Deleting: " << proc->getName() << std::endl;
 		delete proc;
 	}

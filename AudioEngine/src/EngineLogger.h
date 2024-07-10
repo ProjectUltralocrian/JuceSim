@@ -1,7 +1,8 @@
 #pragma once
 
-#include "Defines.h"
 #include "Logger.h"
+#include "Defines.h"
+
 #include <string>
 #include <memory>
 
@@ -15,6 +16,7 @@ namespace pul {
 		PUL_API static Logger& getLogger();
 
 	private:
+		inline static std::atomic<bool> m_Initialised { false };
 		inline static Logger s_Logger{ Logger{} };
 	};
 }
