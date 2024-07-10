@@ -77,14 +77,17 @@
       <PreprocessorDefinitions>PUL_DLL_BUILD;WIN32;_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
       <LanguageStandard>stdcpp20</LanguageStandard>
-      <AdditionalIncludeDirectories>$(SolutionDir)Logger\src;$(SolutionDir)AudioEngine\src;$(SolutionDir)AudioEngine;</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(SolutionDir)Logger\src;$(SolutionDir)AudioEngine\src;$(SolutionDir)AudioEngine;$(SolutionDir)AudioEngine\vendor\lua_wrapper\src; </AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
       <AdditionalDependencies>liblua54.a;$(CoreLibraryDependencies);%(AdditionalDependencies)</AdditionalDependencies>
-      <AdditionalLibraryDirectories>$(SolutionDir)AudioEngine\LuaWrapper\lua-5.4.6;</AdditionalLibraryDirectories>
+      <AdditionalLibraryDirectories>$(SolutionDir)AudioEngine</AdditionalLibraryDirectories>
     </Link>
+    <ProjectReference>
+      <LinkLibraryDependencies>true</LinkLibraryDependencies>
+    </ProjectReference>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
     <ClCompile>
@@ -95,7 +98,7 @@
       <PreprocessorDefinitions>PUL_DLL_BUILD;WIN32;NDEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
       <LanguageStandard>stdcpp20</LanguageStandard>
-      <AdditionalIncludeDirectories>$(SolutionDir)Logger\src;$(SolutionDir)AudioEngine\src;$(SolutionDir)AudioEngine;</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(SolutionDir)Logger\src;$(SolutionDir)AudioEngine\src;$(SolutionDir)AudioEngine;$(SolutionDir)AudioEngine\vendor\lua_wrapper\src; </AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
@@ -103,8 +106,11 @@
       <OptimizeReferences>true</OptimizeReferences>
       <GenerateDebugInformation>true</GenerateDebugInformation>
       <AdditionalDependencies>liblua54.a;$(CoreLibraryDependencies);%(AdditionalDependencies)</AdditionalDependencies>
-      <AdditionalLibraryDirectories>$(SolutionDir)AudioEngine\LuaWrapper\lua-5.4.6;</AdditionalLibraryDirectories>
+      <AdditionalLibraryDirectories>$(SolutionDir)AudioEngine</AdditionalLibraryDirectories>
     </Link>
+    <ProjectReference>
+      <LinkLibraryDependencies>true</LinkLibraryDependencies>
+    </ProjectReference>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <ClCompile>
@@ -113,14 +119,17 @@
       <PreprocessorDefinitions>PUL_DLL_BUILD;_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
       <LanguageStandard>stdcpp20</LanguageStandard>
-      <AdditionalIncludeDirectories>$(SolutionDir)Logger\src;$(SolutionDir)AudioEngine\src;$(SolutionDir)AudioEngine;</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(SolutionDir)Logger\src;$(SolutionDir)AudioEngine\src;$(SolutionDir)AudioEngine;$(SolutionDir)AudioEngine\vendor\lua_wrapper\src; </AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
       <AdditionalDependencies>liblua54.a;$(CoreLibraryDependencies);%(AdditionalDependencies)</AdditionalDependencies>
-      <AdditionalLibraryDirectories>$(SolutionDir)AudioEngine\LuaWrapper\lua-5.4.6;</AdditionalLibraryDirectories>
+      <AdditionalLibraryDirectories>$(SolutionDir)AudioEngine</AdditionalLibraryDirectories>
     </Link>
+    <ProjectReference>
+      <LinkLibraryDependencies>true</LinkLibraryDependencies>
+    </ProjectReference>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
     <ClCompile>
@@ -131,7 +140,7 @@
       <PreprocessorDefinitions>PUL_DLL_BUILD;NDEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
       <LanguageStandard>stdcpp20</LanguageStandard>
-      <AdditionalIncludeDirectories>$(SolutionDir)Logger\src;$(SolutionDir)AudioEngine\src;$(SolutionDir)AudioEngine;</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(SolutionDir)Logger\src;$(SolutionDir)AudioEngine\src;$(SolutionDir)AudioEngine;$(SolutionDir)AudioEngine\vendor\lua_wrapper\src; </AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
@@ -139,29 +148,29 @@
       <OptimizeReferences>true</OptimizeReferences>
       <GenerateDebugInformation>true</GenerateDebugInformation>
       <AdditionalDependencies>liblua54.a;$(CoreLibraryDependencies);%(AdditionalDependencies)</AdditionalDependencies>
-      <AdditionalLibraryDirectories>$(SolutionDir)AudioEngine\LuaWrapper\lua-5.4.6;</AdditionalLibraryDirectories>
+      <AdditionalLibraryDirectories>$(SolutionDir)AudioEngine</AdditionalLibraryDirectories>
     </Link>
+    <ProjectReference>
+      <LinkLibraryDependencies>true</LinkLibraryDependencies>
+    </ProjectReference>
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClInclude Include="AudioEngine.h" />
-    <ClInclude Include="LuaWrapper\src\lua_wrapper.h" />
-    <ClInclude Include="LuaWrapper\src\result.h" />
     <ClInclude Include="src\AudioBuffer.h" />
     <ClInclude Include="src\AudioProcessor.h" />
     <ClInclude Include="src\EngineLogger.h" />
     <ClInclude Include="src\PluginLoader.h" />
     <ClInclude Include="src\PulEngine.h" />
     <ClInclude Include="src\Observer.h" />
+    <ClInclude Include="vendor\lua_wrapper\src\lua_wrapper.h" />
+    <ClInclude Include="vendor\lua_wrapper\src\result.h" />
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="LuaWrapper\src\lua_wrapper.cpp" />
     <ClCompile Include="src\AudioProcessor.cpp" />
     <ClCompile Include="src\EngineLogger.cpp" />
     <ClCompile Include="src\PluginLoader.cpp" />
     <ClCompile Include="src\PulEngine.cpp" />
-  </ItemGroup>
-  <ItemGroup>
-    <Library Include="LuaWrapper\lua-5.4.6\liblua54.a" />
+    <ClCompile Include="vendor\lua_wrapper\src\lua_wrapper.cpp" />
   </ItemGroup>
   <ItemGroup>
     <Text Include="..\x64\Debug\config.lua" />
@@ -170,6 +179,9 @@
     <ProjectReference Include="..\Logger\Logger.vcxproj">
       <Project>{ff6b4920-09cd-421c-8166-b6158b4c7d8a}</Project>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Library Include="..\AudioEngine\liblua54.a" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

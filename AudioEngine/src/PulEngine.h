@@ -3,7 +3,7 @@
 
 
 #include "Observer.h"
-#include "LuaWrapper/src/lua_wrapper.h"
+#include "lua_wrapper.h"
 
 #include "EngineLogger.h"
 

@@ -33,13 +33,13 @@
     <ClInclude Include="AudioEngine.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="LuaWrapper\src\lua_wrapper.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="LuaWrapper\src\result.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="src\EngineLogger.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="vendor\lua_wrapper\src\lua_wrapper.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="vendor\lua_wrapper\src\result.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
@@ -53,21 +53,21 @@
     <ClCompile Include="src\PluginLoader.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="LuaWrapper\src\lua_wrapper.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="src\EngineLogger.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-  </ItemGroup>
-  <ItemGroup>
-    <Library Include="LuaWrapper\lua-5.4.6\liblua54.a">
-      <Filter>Resource Files</Filter>
-    </Library>
+    <ClCompile Include="vendor\lua_wrapper\src\lua_wrapper.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <Text Include="..\x64\Debug\config.lua">
       <Filter>Resource Files</Filter>
     </Text>
+  </ItemGroup>
+  <ItemGroup>
+    <Library Include="..\AudioEngine\liblua54.a">
+      <Filter>Resource Files</Filter>
+    </Library>
   </ItemGroup>
 </Project>
