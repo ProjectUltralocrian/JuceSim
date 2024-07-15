@@ -37,7 +37,6 @@ namespace pul {
             if (ProcAdd)
             {
                 ASSERT(m_Engine != nullptr);
-                std::cout << "Shutting down ...\n";
                 ProcAdd(*m_Engine);
             }
             m_FreeResult = FreeLibrary(m_DynLib);

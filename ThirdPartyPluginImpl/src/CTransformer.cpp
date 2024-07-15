@@ -11,6 +11,7 @@ struct pul::CTransformer::ProcessorImpl
 pul::CTransformer::CTransformer(AudioEngine& engine)
 	: m_Engine{ engine }, m_Impl{ std::make_unique<ProcessorImpl> () }
 {
+	m_Engine.registerAudioProcessor(this);
 }
 
 pul::CTransformer::~CTransformer() = default;

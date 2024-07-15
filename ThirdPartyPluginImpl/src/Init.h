@@ -1,7 +1,6 @@
 #pragma once
 
-#include "MyProcessor.h"
-#include "YourProcessor.h"
+#include "AudioEngine.h"
 
 
 extern "C" {

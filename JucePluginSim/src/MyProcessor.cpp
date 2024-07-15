@@ -14,7 +14,6 @@ namespace pul {
     MyProcessor::~MyProcessor()
     {
         m_Engine.deregisterListener(this);
-        //TODO: registerAudioProcessor
     }
 
     void MyProcessor::onNotified(const Broadcaster& broadcaster, std::string_view msg)

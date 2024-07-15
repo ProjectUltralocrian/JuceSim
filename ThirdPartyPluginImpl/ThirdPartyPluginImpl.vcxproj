@@ -27,26 +27,26 @@
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
-    <ConfigurationType>StaticLibrary</ConfigurationType>
+    <ConfigurationType>DynamicLibrary</ConfigurationType>
     <UseDebugLibraries>true</UseDebugLibraries>
     <PlatformToolset>v143</PlatformToolset>
     <CharacterSet>Unicode</CharacterSet>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="Configuration">
-    <ConfigurationType>StaticLibrary</ConfigurationType>
+    <ConfigurationType>DynamicLibrary</ConfigurationType>
     <UseDebugLibraries>false</UseDebugLibraries>
     <PlatformToolset>v143</PlatformToolset>
     <WholeProgramOptimization>true</WholeProgramOptimization>
     <CharacterSet>Unicode</CharacterSet>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" Label="Configuration">
-    <ConfigurationType>StaticLibrary</ConfigurationType>
+    <ConfigurationType>DynamicLibrary</ConfigurationType>
     <UseDebugLibraries>true</UseDebugLibraries>
     <PlatformToolset>v143</PlatformToolset>
     <CharacterSet>Unicode</CharacterSet>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'" Label="Configuration">
-    <ConfigurationType>StaticLibrary</ConfigurationType>
+    <ConfigurationType>DynamicLibrary</ConfigurationType>
     <UseDebugLibraries>false</UseDebugLibraries>
     <PlatformToolset>v143</PlatformToolset>
     <WholeProgramOptimization>true</WholeProgramOptimization>
@@ -77,7 +77,7 @@
       <PreprocessorDefinitions>WIN32;_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
       <LanguageStandard>stdcpp20</LanguageStandard>
-      <AdditionalIncludeDirectories>$(SolutionDir)JucePluginSim\src;$(SolutionDir)Logger\src;$(SolutionDir)AudioEngine;$(SolutionDir)AudioEngine\vendor\lua_wrapper\src;</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(SolutionDir)Logger\src;$(SolutionDir)AudioEngine;$(SolutionDir)AudioEngine\vendor\lua_wrapper\src;</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
@@ -93,7 +93,7 @@
       <PreprocessorDefinitions>WIN32;NDEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
       <LanguageStandard>stdcpp20</LanguageStandard>
-      <AdditionalIncludeDirectories>$(SolutionDir)JucePluginSim\src;$(SolutionDir)Logger\src;$(SolutionDir)AudioEngine;$(SolutionDir)AudioEngine\vendor\lua_wrapper\src;</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(SolutionDir)Logger\src;$(SolutionDir)AudioEngine;$(SolutionDir)AudioEngine\vendor\lua_wrapper\src;</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
@@ -109,7 +109,7 @@
       <PreprocessorDefinitions>_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
       <LanguageStandard>stdcpp20</LanguageStandard>
-      <AdditionalIncludeDirectories>$(SolutionDir)JucePluginSim\src;$(SolutionDir)Logger\src;$(SolutionDir)AudioEngine;$(SolutionDir)AudioEngine\vendor\lua_wrapper\src;</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(SolutionDir)Logger\src;$(SolutionDir)AudioEngine;$(SolutionDir)AudioEngine\vendor\lua_wrapper\src;</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
@@ -125,7 +125,7 @@
       <PreprocessorDefinitions>NDEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
       <LanguageStandard>stdcpp20</LanguageStandard>
-      <AdditionalIncludeDirectories>$(SolutionDir)JucePluginSim\src;$(SolutionDir)Logger\src;$(SolutionDir)AudioEngine;$(SolutionDir)AudioEngine\vendor\lua_wrapper\src;</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(SolutionDir)Logger\src;$(SolutionDir)AudioEngine;$(SolutionDir)AudioEngine\vendor\lua_wrapper\src;</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
@@ -135,12 +135,21 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="src\CTransformer.cpp" />
+    <ClCompile Include="src\Init.cpp" />
     <ClCompile Include="src\ThirdImpl.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\AudioEngine\AudioEngine.vcxproj">
       <Project>{55759641-a7ec-4893-b170-c336715dddde}</Project>
     </ProjectReference>
+    <ProjectReference Include="..\Logger\Logger.vcxproj">
+      <Project>{ff6b4920-09cd-421c-8166-b6158b4c7d8a}</Project>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="src\CTransformer.h" />
+    <ClInclude Include="src\Init.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

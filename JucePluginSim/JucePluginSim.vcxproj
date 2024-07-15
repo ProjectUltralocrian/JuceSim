@@ -19,7 +19,6 @@
     </ProjectConfiguration>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="src\CTransformer.h" />
     <ClInclude Include="src\DryWet.h" />
     <ClInclude Include="src\Gain.h" />
     <ClInclude Include="src\Init.h" />
@@ -27,7 +26,6 @@
     <ClInclude Include="src\YourProcessor.h" />
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="src\CTransformer.cpp" />
     <ClCompile Include="src\Init.cpp" />
     <ClCompile Include="src\MyProcessor.cpp" />
     <ClCompile Include="src\YourProcessor.cpp" />
@@ -38,9 +36,6 @@
     </ProjectReference>
     <ProjectReference Include="..\Logger\Logger.vcxproj">
       <Project>{ff6b4920-09cd-421c-8166-b6158b4c7d8a}</Project>
-    </ProjectReference>
-    <ProjectReference Include="..\ThirdPartyPluginImpl\ThirdPartyPluginImpl.vcxproj">
-      <Project>{275f9867-d7f0-43f3-9e43-0a7c3a863cc2}</Project>
     </ProjectReference>
   </ItemGroup>
   <PropertyGroup Label="Globals">

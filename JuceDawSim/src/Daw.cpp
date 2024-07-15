@@ -17,7 +17,6 @@ namespace pul {
 
 
         PUL_INFO("Starting DAW... :))");
-        //EngineLogger::getLogger().Info("Hello");
 
 
         auto processors = getAudioProcessors();

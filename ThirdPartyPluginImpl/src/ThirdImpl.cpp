@@ -16,19 +16,10 @@ const char* pul::CTransformer::ProcessorImpl::getName() const
 
 void pul::CTransformer::ProcessorImpl::prepareToPlay()
 {
-	throw NotImplementedException();
+	PUL_INFO("Preparing to play in Thirdparty plugin...");
 }
 
 void pul::CTransformer::ProcessorImpl::processBlock(pul::AudioBuffer<float>* buffer)
 {
-	throw NotImplementedException();
+	buffer->process([](float f) { return 5 * f; });
 }
-
-/*
-
-{
-	
-	void prepareToPlay();
-	void processBlock(pul::AudioBuffer<float>* buffer);
-};
-*/
