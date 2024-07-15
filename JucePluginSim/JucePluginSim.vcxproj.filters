@@ -30,6 +30,9 @@
     <ClInclude Include="src\Init.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="src\CTransformer.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\MyProcessor.cpp">
@@ -39,6 +42,9 @@
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="src\Init.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\CTransformer.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>

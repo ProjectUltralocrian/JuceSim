@@ -18,61 +18,35 @@
       <Platform>x64</Platform>
     </ProjectConfiguration>
   </ItemGroup>
-  <ItemGroup>
-    <ClInclude Include="src\CTransformer.h" />
-    <ClInclude Include="src\DryWet.h" />
-    <ClInclude Include="src\Gain.h" />
-    <ClInclude Include="src\Init.h" />
-    <ClInclude Include="src\MyProcessor.h" />
-    <ClInclude Include="src\YourProcessor.h" />
-  </ItemGroup>
-  <ItemGroup>
-    <ClCompile Include="src\CTransformer.cpp" />
-    <ClCompile Include="src\Init.cpp" />
-    <ClCompile Include="src\MyProcessor.cpp" />
-    <ClCompile Include="src\YourProcessor.cpp" />
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\AudioEngine\AudioEngine.vcxproj">
-      <Project>{55759641-a7ec-4893-b170-c336715dddde}</Project>
-    </ProjectReference>
-    <ProjectReference Include="..\Logger\Logger.vcxproj">
-      <Project>{ff6b4920-09cd-421c-8166-b6158b4c7d8a}</Project>
-    </ProjectReference>
-    <ProjectReference Include="..\ThirdPartyPluginImpl\ThirdPartyPluginImpl.vcxproj">
-      <Project>{275f9867-d7f0-43f3-9e43-0a7c3a863cc2}</Project>
-    </ProjectReference>
-  </ItemGroup>
   <PropertyGroup Label="Globals">
     <VCProjectVersion>17.0</VCProjectVersion>
     <Keyword>Win32Proj</Keyword>
-    <ProjectGuid>{49f030ac-9a28-43ad-9513-9af03e83eb05}</ProjectGuid>
-    <RootNamespace>JucePluginSim</RootNamespace>
+    <ProjectGuid>{275f9867-d7f0-43f3-9e43-0a7c3a863cc2}</ProjectGuid>
+    <RootNamespace>ThirdPartyPluginImpl</RootNamespace>
     <WindowsTargetPlatformVersion>10.0</WindowsTargetPlatformVersion>
-    <ProjectName>PluginSim</ProjectName>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
-    <ConfigurationType>DynamicLibrary</ConfigurationType>
+    <ConfigurationType>StaticLibrary</ConfigurationType>
     <UseDebugLibraries>true</UseDebugLibraries>
     <PlatformToolset>v143</PlatformToolset>
     <CharacterSet>Unicode</CharacterSet>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="Configuration">
-    <ConfigurationType>DynamicLibrary</ConfigurationType>
+    <ConfigurationType>StaticLibrary</ConfigurationType>
     <UseDebugLibraries>false</UseDebugLibraries>
     <PlatformToolset>v143</PlatformToolset>
     <WholeProgramOptimization>true</WholeProgramOptimization>
     <CharacterSet>Unicode</CharacterSet>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" Label="Configuration">
-    <ConfigurationType>DynamicLibrary</ConfigurationType>
+    <ConfigurationType>StaticLibrary</ConfigurationType>
     <UseDebugLibraries>true</UseDebugLibraries>
     <PlatformToolset>v143</PlatformToolset>
     <CharacterSet>Unicode</CharacterSet>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'" Label="Configuration">
-    <ConfigurationType>DynamicLibrary</ConfigurationType>
+    <ConfigurationType>StaticLibrary</ConfigurationType>
     <UseDebugLibraries>false</UseDebugLibraries>
     <PlatformToolset>v143</PlatformToolset>
     <WholeProgramOptimization>true</WholeProgramOptimization>
@@ -100,10 +74,10 @@
     <ClCompile>
       <WarningLevel>Level3</WarningLevel>
       <SDLCheck>true</SDLCheck>
-      <PreprocessorDefinitions>JUCE_DLL_BUILD;WIN32;_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions>WIN32;_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
       <LanguageStandard>stdcpp20</LanguageStandard>
-      <AdditionalIncludeDirectories>$(SolutionDir)Logger\src;$(SolutionDir)AudioEngine\vendor\lua_wrapper\src;$(SolutionDir)AudioEngine;$(SolutionDir)AudioEngine\vendor\lua_wrapper\src;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(SolutionDir)JucePluginSim\src;$(SolutionDir)Logger\src;$(SolutionDir)AudioEngine;$(SolutionDir)AudioEngine\vendor\lua_wrapper\src;</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
@@ -116,10 +90,10 @@
       <FunctionLevelLinking>true</FunctionLevelLinking>
       <IntrinsicFunctions>true</IntrinsicFunctions>
       <SDLCheck>true</SDLCheck>
-      <PreprocessorDefinitions>JUCE_DLL_BUILD;WIN32;NDEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions>WIN32;NDEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
       <LanguageStandard>stdcpp20</LanguageStandard>
-      <AdditionalIncludeDirectories>$(SolutionDir)Logger\src;$(SolutionDir)AudioEngine\vendor\lua_wrapper\src;$(SolutionDir)AudioEngine;$(SolutionDir)AudioEngine\vendor\lua_wrapper\src;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(SolutionDir)JucePluginSim\src;$(SolutionDir)Logger\src;$(SolutionDir)AudioEngine;$(SolutionDir)AudioEngine\vendor\lua_wrapper\src;</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
@@ -132,10 +106,10 @@
     <ClCompile>
       <WarningLevel>Level3</WarningLevel>
       <SDLCheck>true</SDLCheck>
-      <PreprocessorDefinitions>JUCE_DLL_BUILD;_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions>_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
       <LanguageStandard>stdcpp20</LanguageStandard>
-      <AdditionalIncludeDirectories>$(SolutionDir)Logger\src;$(SolutionDir)AudioEngine\vendor\lua_wrapper\src;$(SolutionDir)AudioEngine;$(SolutionDir)AudioEngine\vendor\lua_wrapper\src;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(SolutionDir)JucePluginSim\src;$(SolutionDir)Logger\src;$(SolutionDir)AudioEngine;$(SolutionDir)AudioEngine\vendor\lua_wrapper\src;</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
@@ -148,10 +122,10 @@
       <FunctionLevelLinking>true</FunctionLevelLinking>
       <IntrinsicFunctions>true</IntrinsicFunctions>
       <SDLCheck>true</SDLCheck>
-      <PreprocessorDefinitions>JUCE_DLL_BUILD;NDEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions>NDEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
       <LanguageStandard>stdcpp20</LanguageStandard>
-      <AdditionalIncludeDirectories>$(SolutionDir)Logger\src;$(SolutionDir)AudioEngine\vendor\lua_wrapper\src;$(SolutionDir)AudioEngine;$(SolutionDir)AudioEngine\vendor\lua_wrapper\src;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(SolutionDir)JucePluginSim\src;$(SolutionDir)Logger\src;$(SolutionDir)AudioEngine;$(SolutionDir)AudioEngine\vendor\lua_wrapper\src;</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
@@ -160,6 +134,14 @@
       <GenerateDebugInformation>true</GenerateDebugInformation>
     </Link>
   </ItemDefinitionGroup>
+  <ItemGroup>
+    <ClCompile Include="src\ThirdImpl.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\AudioEngine\AudioEngine.vcxproj">
+      <Project>{55759641-a7ec-4893-b170-c336715dddde}</Project>
+    </ProjectReference>
+  </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
   </ImportGroup>
