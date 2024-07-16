@@ -1,6 +1,10 @@
 #include "CTransformer.h"
 
 
+extern "C" {
+	void extPrepareToPlay();
+}
+
 struct pul::CTransformer::ProcessorImpl
 {
 	const char* getName() const;
@@ -16,7 +20,8 @@ const char* pul::CTransformer::ProcessorImpl::getName() const
 
 void pul::CTransformer::ProcessorImpl::prepareToPlay()
 {
-	PUL_INFO("Preparing to play in Thirdparty plugin...");
+	extPrepareToPlay();
+	//PUL_INFO("Preparing to play in Thirdparty plugin...");
 }
 
 void pul::CTransformer::ProcessorImpl::processBlock(pul::AudioBuffer<float>* buffer)
