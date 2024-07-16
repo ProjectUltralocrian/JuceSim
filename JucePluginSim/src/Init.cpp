@@ -14,10 +14,7 @@ void AudioProcessorInit(pul::AudioEngine& engine)
 
 void AudioProcessorShutdown(pul::AudioEngine& engine)
 {
-	for (auto* proc : engine.getAudioProcessors()) {
-		if (std::find(thisProcessor.begin(), thisProcessor.end(), proc) != thisProcessor.end()) {
-			std::cout << "Deleting: " << proc->getName() << std::endl;
-			delete proc;
-		}
+	for (auto* proc : thisProcessor) {
+		engine.deregisterAudioProcessor(proc);
 	}
 }

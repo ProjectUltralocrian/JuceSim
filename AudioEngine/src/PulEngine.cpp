@@ -20,6 +20,16 @@ namespace pul {
         }
     }
 
+    PUL_API void AudioEngine::deregisterAudioProcessor(AudioProcessor* processor)
+    {
+        for (auto* proc : getAudioProcessors()) {
+            if (processor == proc) {
+                std::cout << "Deleting: " << proc->getName() << std::endl;
+                delete proc;
+            }
+        }
+    }
+
     void AudioEngine::run() 
     {      
         play();

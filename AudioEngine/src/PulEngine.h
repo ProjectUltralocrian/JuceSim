@@ -53,6 +53,7 @@ namespace pul {
 		PUL_API virtual ~AudioEngine();
 		PUL_API virtual void run();
 		PUL_API virtual void registerAudioProcessor(AudioProcessor* processor);
+		PUL_API virtual void deregisterAudioProcessor(AudioProcessor* processor);
 		PUL_API virtual std::vector<AudioProcessor*> getAudioProcessors() const;
 		
 		
