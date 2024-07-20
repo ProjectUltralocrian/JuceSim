@@ -386,3 +386,9 @@ FodyWeavers.xsd
 /Logger/Logger.vcxproj.filters
 /ThirdPartyPluginImpl/ThirdPartyPluginImpl.vcxproj
 /ThirdPartyPluginImpl/ThirdPartyPluginImpl.vcxproj.filters
+/CPlugin/CPlugin.vcxproj.filters
+/JucePluginSim/JucePluginSim.vcxproj
+/JucePluginSim/JucePluginSim.vcxproj.filters
+/Logger/Logger.vcxproj.filters
+/ThirdPartyPluginImpl/ThirdPartyPluginImpl.vcxproj
+/ThirdPartyPluginImpl/ThirdPartyPluginImpl.vcxproj.filters
