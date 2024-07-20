@@ -1,76 +1,76 @@
 project "DawSim"
-	kind "ConsoleApp"
-	language "C++"
-	cppdialect "C++20"
-	--staticruntime "off"
+kind "ConsoleApp"
+language "C++"
+cppdialect "C++20"
+--staticruntime "off"
 
-	targetdir ("%{wks.location}/bin/" .. outputdir .. "/%{prj.name}")
-	objdir ("%{wks.location}/bin-int/" .. outputdir .. "/%{prj.name}")
+targetdir("%{wks.location}/bin/" .. outputdir .. "/%{prj.name}")
+objdir("%{wks.location}/bin-int/" .. outputdir .. "/%{prj.name}")
+debugdir("%{wks.location}/bin/" .. outputdir .. "/%{prj.name}")
 
-	--pchheader "hzpch.h"
-	--pchsource "src/hzpch.cpp"
 
-	files
-	{
-		"src/**.h",
-		"src/**.cpp",
-	}
+files
+{
+	"src/**.h",
+	"src/**.cpp",
+}
 
-	defines
-	{
-	}
+defines
+{
+}
 
-	includedirs
-	{
-		"src",
-		"%{IncludeDir.audioengine}"
-		"%{IncludeDir.pluginsim}"
-		"%{IncludeDir.logger}"
-		"%{IncludeDir.lua_wrapper}"
-	}
+includedirs
+{
+	"src",
+	"%{IncludeDir.audioengine}",
+	"%{IncludeDir.pluginsim}",
+	"%{IncludeDir.logger}",
+	"%{IncludeDir.lua_wrapper}"
+}
 
-	libdirs { }
+libdirs {}
 
-	links
-	{
-		"AudioEngine"
-	}
+links
+{
+	"AudioEngine",
+	"Logger"
+}
 
-	
-	filter "system:windows"
-		systemversion "latest"
 
-		defines
-		{
-		}
+filter "system:windows"
+systemversion "latest"
 
-		links
-		{
-		}
+defines
+{
+}
 
-	filter "configurations:Debug"
-		defines "PUL_DEBUG"
-		runtime "Debug"
-		symbols "on"
+links
+{
+}
 
-		links
-		{
-		}
+filter "configurations:Debug"
+defines "PUL_DEBUG"
+runtime "Debug"
+symbols "on"
 
-	filter "configurations:Release"
-		defines "PUL_RELEASE"
-		runtime "Release"
-		optimize "on"
+links
+{
+}
 
-		links
-		{
-		}
+filter "configurations:Release"
+defines "PUL_RELEASE"
+runtime "Release"
+optimize "on"
 
-	filter "configurations:Dist"
-		defines "PUL_DIST"
-		runtime "Release"
-		optimize "on"
+links
+{
+}
 
-		links
-		{
-		}
+filter "configurations:Dist"
+defines "PUL_DIST"
+runtime "Release"
+optimize "on"
+
+links
+{
+}

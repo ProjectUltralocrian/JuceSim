@@ -1,10 +1,8 @@
 #include "Daw.h"
 #include "AudioEngine.h"
-
 #include <chrono>
 #include <iostream>
 #include <thread>
-
 
 using namespace std::chrono_literals;
 
@@ -16,7 +14,7 @@ namespace pul {
         EngineLogger::Init(Logger::LogLevel::Info);
 
 
-        PUL_INFO("Starting DAW... :))");
+        PUL_INFO("Starting DAW...");
 
 
         auto processors = getAudioProcessors();

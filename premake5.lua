@@ -1,12 +1,13 @@
 workspace "JuceSim"
-	architecture "x86_64"
-	startproject "JuceDawSim"
+architecture "x86_64"
+startproject "JuceDawSim"
 
-	configurations
-	{
-		"Debug",
-		"Release",
-	}
+
+configurations
+{
+	"Debug",
+	"Release",
+}
 
 IncludeDir = {}
 IncludeDir["audioengine"] = "%{wks.location}/AudioEngine/"
@@ -17,31 +18,32 @@ IncludeDir["logger"] = "%{wks.location}/Logger/src"
 
 outputdir = "%{cfg.buildcfg}-%{cfg.system}-%{cfg.architecture}"
 
-group "Dependencies"
-	include "vendor/lua_wrapper"
-	
-group ""
-
 group "AudioEngine"
-	include "AudioEngine"
+include "AudioEngine"
 group ""
 
 group "CPlugin"
-	include "CPlugin"
+include "CPlugin"
 group ""
 
 group "JuceDawSim"
-	include "JuceDawSim"
+include "JuceDawSim"
 group ""
 
-group "JucePluginwSim"
-	include "JucePluginSim"
+group "JucePluginSim"
+include "JucePluginSim"
 group ""
 
 group "Logger"
-	include "Logger"
+include "Logger"
 group ""
 
 group "ThirdPartyPluginImpl"
-	include "ThirdPartyPluginImpl"
+include "ThirdPartyPluginImpl"
 group ""
+
+
+postbuildcommands
+{
+	"{COPYFILE} %[config.lua] %[%{!wks.location}/bin/%{!outputdir}/DawSim]"
+}

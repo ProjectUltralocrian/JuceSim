@@ -1,77 +1,83 @@
 project "ThirdPartyPluginImpl"
-	kind "SharedLib"
-	language "C++"
-	cppdialect "C++20"
-	--staticruntime "off"
+kind "SharedLib"
+language "C++"
+cppdialect "C++20"
+--staticruntime "off"
 
-	targetdir ("%{wks.location}/bin/" .. outputdir .. "/%{prj.name}")
-	objdir ("%{wks.location}/bin-int/" .. outputdir .. "/%{prj.name}")
+targetdir("%{wks.location}/bin/" .. outputdir .. "/%{prj.name}")
+objdir("%{wks.location}/bin-int/" .. outputdir .. "/%{prj.name}")
 
-	--pchheader "hzpch.h"
-	--pchsource "src/hzpch.cpp"
 
-	files
-	{
-		"src/**.h",
-		"src/**.cpp",
-	}
+files
+{
+	"src/**.h",
+	"src/**.cpp",
+}
 
-	defines
-	{
-		"PUL_DLL_BUILD",
-	}
+defines
+{
+	"PUL_DLL_BUILD",
+}
 
-	includedirs
-	{
-		"."
-		"src",
-		"%{IncludeDir.logger}"
-		"%{IncludeDir.lua_wrapper}"
-		"%{IncludeDir.audioengine}"
-		
-	}
+includedirs
+{
+	".",
+	"src",
+	"%{IncludeDir.logger}",
+	"%{IncludeDir.lua_wrapper}",
+	"%{IncludeDir.audioengine}"
 
-	libdirs {  }
+}
 
-	links
-	{
-	}
+libdirs {}
 
-	
-	filter "system:windows"
-		systemversion "latest"
+links
+{
+	"AudioEngine",
+	"Logger",
+	"CPlugin"
+}
 
-		defines
-		{
-		}
+postbuildcommands
+{
+	--this should be adjusted for Linux
+	"{COPYFILE} %[%{cfg.targetdir}/ThirdPartyPluginImpl.dll] %[%{wks.location}/bin/%{outputdir}/DawSim]"
+}
 
-		links
-		{
-		}
+filter "system:windows"
+systemversion "latest"
 
-	filter "configurations:Debug"
-		defines "PUL_DEBUG"
-		runtime "Debug"
-		symbols "on"
+defines
+{
+}
 
-		links
-		{
-		}
+links
+{
+}
 
-	filter "configurations:Release"
-		defines "PUL_RELEASE"
-		runtime "Release"
-		optimize "on"
+filter "configurations:Debug"
+defines "PUL_DEBUG"
+runtime "Debug"
+symbols "on"
 
-		links
-		{
-		}
+links
+{
+}
 
-	filter "configurations:Dist"
-		defines "PUL_DIST"
-		runtime "Release"
-		optimize "on"
+filter "configurations:Release"
+defines "PUL_RELEASE"
+runtime "Release"
+optimize "on"
 
-		links
-		{
-		}
+links
+{
+}
+
+filter "configurations:Dist"
+defines "PUL_DIST"
+runtime "Release"
+optimize "on"
+
+links
+{
+}
