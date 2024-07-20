@@ -361,3 +361,22 @@ MigrationBackup/
 
 # Fody - auto-generated XML schema
 FodyWeavers.xsd
+/AudioEngine/AudioEngine.vcxproj
+/AudioEngine/AudioEngine.vcxproj.filters
+/AudioEngine/Makefile
+/bin-int/Debug-windows-x86_64/AudioEngine/AudioEngine.tlog
+/bin-int/Debug-windows-x86_64/AudioEngine/AudioEngine.dll.recipe
+/bin-int/Debug-windows-x86_64/AudioEngine/vc143.idb
+/bin-int/Debug-windows-x86_64/DawSim/DawSim.tlog
+/bin-int/Debug-windows-x86_64/DawSim/DawSim.exe.recipe
+/bin-int/Debug-windows-x86_64/DawSim/vc143.idb
+/bin-int/Debug-windows-x86_64/Logger/Logger.tlog
+/bin-int/Debug-windows-x86_64/Logger/Logger.lib.recipe
+/CPlugin/Makefile
+/CPlugin/CPlugin.vcxproj
+/JuceDawSim/DawSim.vcxproj
+/JucePluginSim/Makefile
+/JucePluginSim/PluginSim.vcxproj
+/Logger/Logger.vcxproj
+/Logger/Makefile
+/JuceSim.sln

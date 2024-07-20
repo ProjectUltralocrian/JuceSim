@@ -17,10 +17,14 @@
 #if defined _MSC_VER
 	#if defined PUL_DEBUG
 		#define ASSERT(x) if(!(x)) {__debugbreak();}
+	#else 
+		#define ASSERT(x)
 	#endif
 #elif defined (SIGTRAP)
 	#if defined PUL_DEBUG
 		#define ASSERT(x) if(!(x)) {raise(SIGTRAP);}
+	#else
+		#define ASSERT(x)
 	#endif
 #else 
 	#define ASSERT(x) if(!(x)) {raise(SIGABRT);}

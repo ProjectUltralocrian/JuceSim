@@ -1,5 +1,6 @@
 #include "EngineLogger.h"
 
+
 namespace pul {
 	void EngineLogger::Init(Logger::LogLevel level)
 	{
