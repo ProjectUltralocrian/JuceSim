@@ -3,6 +3,8 @@ architecture "x86_64"
 startproject "JuceDawSim"
 
 
+
+
 configurations
 {
 	"Debug",
